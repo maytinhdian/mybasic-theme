@@ -1,0 +1,15 @@
+@use "../abstracts/" as *;
+
+html {
+  font-size: 62.5%; /* 62.5% của 16px = 10px */
+}
+
+body {
+  font-size: $font-size-base;
+  line-height: 1.6;
+  font-family: $font-family-base;
+}
+
+a {
+  color: theme-color("link-color");
+}

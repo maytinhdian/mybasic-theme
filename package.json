@@ -1,0 +1,17 @@
+{
+  "name": "mybasic-theme",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "sass": "sass assets/sass/main.scss ./style.css --style=expanded",
+    "watch": "npx sass assets/sass/main.scss ./style.css --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "sass": "^1.90.0"
+  }
+}

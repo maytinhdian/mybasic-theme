@@ -1,0 +1,27 @@
+/*
+Theme Name: My Basic Theme
+Theme URI: https://example.com/
+Author: tnhalk
+Author URI: https://example.com/
+Description: A super basic WordPress theme
+Version: 1.0
+License: GNU General Public License v2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: mybasic-theme
+*/
+
+@use "base";
+
+@use "abstracts";
+
+@use "layout";
+
+@use "components";
+
+@use "pages";
+
+@use "themes";
+
+@use "vendors";
+
+@use "utilities";
