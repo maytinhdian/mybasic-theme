@@ -6,7 +6,11 @@
 node_modules/
 
 # Ignore the 'node_modules' directory 
-inc/kirki/ 
+inc/kirki/
+
+#Ignore the 'style.scss' and it .map file
+style.css
+style.css.map
 
 # Don't ignore README.md, even if other .md files are ignored
 !README.md

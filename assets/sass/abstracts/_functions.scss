@@ -42,3 +42,20 @@ $default-theme: theme-color.$theme-color-light !default;
   padding-right: $padding;
 }
 
+
+@function fluid-space($min, $max, $min-vw: 320px, $max-vw: 1920px) {
+  // Loại đơn vị ra để tính toán (unitless)
+  $min-num: math.div($min, 1rem); // giả định bạn dùng rem
+  $max-num: math.div($max, 1rem);
+  $min-vw-num: math.div($min-vw, 1px);
+  $max-vw-num: math.div($max-vw, 1px);
+
+  // Hệ số góc và intercept (unitless)
+  $slope: ($max-num - $min-num) / ($max-vw-num - $min-vw-num) * 100;
+  $intercept: $min-num - ($slope * $min-vw-num / 100);
+
+  // Trả về chuỗi clamp với đơn vị rem + vw
+  @return clamp(#{$min}, #{($intercept)}rem + #{$slope}vw, #{$max});
+}
+
+

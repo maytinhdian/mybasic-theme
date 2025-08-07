@@ -1,18 +1,317 @@
-/* Error: expected "$".
- *   ,
- * 2 | @for
- *   |     ^
- *   '
- *   assets\sass\utilities\_index.scss 2:5  @use
- *   assets\sass\main.scss 27:1             root stylesheet */
-
-body::before {
-  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
-      "Droid Sans Mono", monospace, monospace;
-  white-space: pre;
-  display: block;
-  padding: 1em;
-  margin-bottom: 1em;
-  border-bottom: 2px solid black;
-  content: 'Error: expected "$".\a   \2577 \a 2 \2502  @for\a   \2502      ^\a   \2575 \a   assets\\sass\\utilities\\_index.scss 2:5  @use\a   assets\\sass\\main.scss 27:1             root stylesheet';
+@charset "UTF-8";
+/*
+Theme Name: My Basic Theme
+Theme URI: https://example.com/
+Author: tnhalk
+Author URI: https://example.com/
+Description: A super basic WordPress theme
+Version: 1.0
+License: GNU General Public License v2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: mybasic-theme
+*/
+/* Andy Bell’s reset - modern và gọn */
+*, *::before, *::after {
+  box-sizing: border-box;
 }
+
+* {
+  margin: 0;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+input, button, textarea, select {
+  font: inherit;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+
+#root, #app {
+  isolation: isolate;
+}
+
+/* Box sizing */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* 2. Reset margin + padding */
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol,
+li,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+  padding: 0;
+}
+
+/* 3. Remove list styles */
+ul,
+ol {
+  list-style: none;
+}
+
+/* 4. Remove default link underline */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* 5. Base body styles */
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.6rem;
+  color: #1a1a1a;
+  background-color: #ffffff;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 6. Images responsive */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* 7. Form elements inherit font */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* 8. Heading styles (basic) */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: bold;
+  line-height: 1.2;
+}
+
+html {
+  font-size: 62.5%; /* 62.5% của 16px = 10px */
+}
+
+body {
+  font-size: 1.6rem;
+  line-height: 1.6;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+a {
+  color: #ff7ec8;
+}
+
+.site-header__branding {
+  margin: fluid-margin(1rem, 5rem);
+}
+
+.top-bar__wrapper {
+  width: 100%;
+}
+.top-bar__wrapper nav-bar {
+  display: flex;
+}
+
+.menu__list {
+  font-size: clamp(1.5rem, 1.5rem + 1.5 * (100vw - 320px) / 880, 3rem);
+  gap: clamp(1rem, 0.6rem + 0.125vw, 3rem);
+}
+
+.test {
+  font-size: clamp(1.5rem, 1.5rem + 8.5 * (100vw - 320px) / 880, 10rem);
+  background-color: aqua;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.site-main {
+  flex: 1;
+}
+
+.site-footer {
+  background-color: #00deff;
+}
+
+.container {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.container--fluid {
+  max-width: 100%;
+}
+
+.site-nav__menu {
+  display: flex;
+  flex-flow: row nowrap;
+  gap: 2rem;
+}
+
+.swiper-slide img {
+  width: 100%;
+  border-radius: 8px;
+  display: block;
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.flex-row-nowrap {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+
+.flex-center {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+.flex-between {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+}
+
+.m-0 {
+  margin: 0 !important;
+}
+
+.mt-1 {
+  margin-top: 1rem !important;
+}
+
+.mb-2 {
+  margin-bottom: 2rem !important;
+}
+
+.mx-auto {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.p-0 {
+  padding: 0 !important;
+}
+
+.pt-1 {
+  padding-top: 1rem !important;
+}
+
+.py-2 {
+  padding-top: 2rem !important;
+  padding-bottom: 2rem !important;
+}
+
+.w-100 {
+  width: 100% !important;
+}
+
+.h-100 {
+  height: 100% !important;
+}
+
+.w-auto {
+  width: auto !important;
+}
+
+.position-relative {
+  position: relative !important;
+}
+
+.position-absolute {
+  position: absolute !important;
+}
+
+.top-0 {
+  top: 0 !important;
+}
+
+.right-0 {
+  right: 0 !important;
+}
+
+.d-block {
+  display: block !important;
+}
+
+.d-inline {
+  display: inline !important;
+}
+
+.d-flex {
+  display: flex !important;
+}
+
+.d-none {
+  display: none !important;
+}
+
+.text-center {
+  text-align: center !important;
+}
+
+.text-left {
+  text-align: left !important;
+}
+
+.text-bold {
+  font-weight: bold !important;
+}
+
+.text-muted {
+  color: #6c757d !important;
+}
+
+.uppercase {
+  text-transform: uppercase !important;
+}
+
+/*# sourceMappingURL=style.css.map */

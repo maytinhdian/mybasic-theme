@@ -1,0 +1,12 @@
+// _container.scss
+
+.container {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+// nếu cần biến hoặc modifier
+.container--fluid {
+  max-width: 100%;
+}

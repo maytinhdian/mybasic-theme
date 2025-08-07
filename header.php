@@ -13,8 +13,10 @@
   <?php wp_body_open(); ?>
 
   <header class="site-header">
-    <div class="container flex-row site-header__container">
-      <!-- <?php get_template_part('template-parts/header/header', 'top', array()); ?> -->
+    <div class="container flex-row">
+      <div class=" flex-row top-bar__wrapper">
+        <?php get_template_part('template-parts/header/header', 'top', array()); ?>
+      </div>
 
       <div class="site-header__branding">
         <?php if (has_custom_logo()) : ?>
