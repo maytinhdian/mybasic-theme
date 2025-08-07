@@ -7,3 +7,6 @@ node_modules/
 
 # Ignore the 'node_modules' directory 
 inc/kirki/ 
+
+# Don't ignore README.md, even if other .md files are ignored
+!README.md
