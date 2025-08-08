@@ -13,11 +13,11 @@ $default-theme: theme-color.$theme-color-light !default;
 @function fluid($min, $max, $min-vw, $max-vw: 1200px) {
   // Khoảng cách giá trị (unitless, tính theo rem)
   $delta: math.div($max - $min, 1rem);
-  @debug "$delta: #{$delta}";
+  // @debug "$delta: #{$delta}";
 
   // Khoảng cách viewport (unitless, tính theo px)
   $range: math.div($max-vw - $min-vw, 1px);
-  @debug "$range: #{$range}";
+  // @debug "$range: #{$range}";
 
   // Biểu thức fluid: min + delta * ((100vw - min-vw) / range)
   $fluid-calc: calc(#{$min} + #{$delta} * ((100vw - #{$min-vw}) / #{$range}));
@@ -42,7 +42,6 @@ $default-theme: theme-color.$theme-color-light !default;
   padding-right: $padding;
 }
 
-
 @function fluid-space($min, $max, $min-vw: 320px, $max-vw: 1920px) {
   // Loại đơn vị ra để tính toán (unitless)
   $min-num: math.div($min, 1rem); // giả định bạn dùng rem
@@ -51,11 +50,10 @@ $default-theme: theme-color.$theme-color-light !default;
   $max-vw-num: math.div($max-vw, 1px);
 
   // Hệ số góc và intercept (unitless)
-  $slope: ($max-num - $min-num) / ($max-vw-num - $min-vw-num) * 100;
-  $intercept: $min-num - ($slope * $min-vw-num / 100);
+  @debug "$max-vw-num: #{$max-vw-num}";
+  $slope: math.div(($max-num - $min-num), ($max-vw-num - $min-vw-num)) * 50;
+  $intercept: $min-num - $slope * math.div($min-vw-num, 100);
 
   // Trả về chuỗi clamp với đơn vị rem + vw
   @return clamp(#{$min}, #{($intercept)}rem + #{$slope}vw, #{$max});
 }
-
-

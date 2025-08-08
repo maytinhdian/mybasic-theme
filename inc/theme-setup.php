@@ -26,7 +26,7 @@ function mybasic_register_menus()
     register_nav_menus(array(
         'primary' => esc_html__('Primary Menu', 'mybasic-theme'),
         'footer'  => esc_html__('Footer Menu', 'mybasic-theme'),
-        'top-bar'  => esc_html__('Top Quick Menu', 'mybasic-theme'),
+        'topbar'  => esc_html__('Top Quick Menu', 'mybasic-theme'),
     ));
 }
 function mytheme_theme_setup()

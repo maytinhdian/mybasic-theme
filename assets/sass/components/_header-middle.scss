@@ -1,0 +1,15 @@
+.site-header {
+  &__middle {
+    padding: 1rem;
+    gap: 2rem;
+    justify-content: space-between;
+    @debug "";
+  }
+  &__branding {
+    @debug "";
+  }
+}
+// .site-nav {
+//   flex: 1;
+//   flex-grow: 1;
+// }
