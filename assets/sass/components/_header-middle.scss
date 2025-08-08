@@ -1,8 +1,11 @@
+@use "../abstracts/" as * ;
 .site-header {
   &__middle {
-    padding: 1rem;
+    padding: 2.5rem;
     gap: 2rem;
     justify-content: space-between;
+    align-items: center;
+    // background-color: theme-color("primary-color");
     @debug "";
   }
   &__branding {

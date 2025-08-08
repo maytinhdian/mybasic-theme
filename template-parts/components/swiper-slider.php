@@ -3,22 +3,16 @@
  <div class="swiper mySwiper">
      <div class="swiper-wrapper">
          <div class="swiper-slide">
-             <h3>Test 1</h3>
+             <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/slide1.jpg'); ?>" alt="Mô tả ảnh">
          </div>
          <div class="swiper-slide">
-             <h3>Test 12</h3>
+             <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/slide2.jpg'); ?>" alt="Mô tả ảnh">
          </div>
          <div class="swiper-slide">
-             <h3>Test 123</h3>
+             <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/slide3.jpg'); ?>" alt="Mô tả ảnh">
          </div>
          <div class="swiper-slide">
-             <h3>Test 124</h3>
-         </div>
-         <div class="swiper-slide">
-             <h3>Test 125</h3>
-         </div>
-         <div class="swiper-slide">
-             <h3>Test 126</h3>
+             <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/slide4.jpg'); ?>" alt="Mô tả ảnh">
          </div>
      </div>
 

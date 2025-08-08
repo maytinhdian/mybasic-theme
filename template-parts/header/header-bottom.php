@@ -1,4 +1,3 @@
 <div class="site-header__bottom">
-    <p>Header Bottom </p>
-    </br>
+      <?php get_template_part('template-parts/components/swiper', 'slider'); ?>
 </div>

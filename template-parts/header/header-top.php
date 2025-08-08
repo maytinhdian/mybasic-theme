@@ -12,9 +12,9 @@
     </div>
     <div class="flex-row">
         <div class="header-top__social">
-            <a href="#"><i class="fa-brands fa-facebook fa-xl"></i></a>
-            <a href="#"> <i class="fa-brands fa-linkedin  fa-xl"></i></a>
-            <a href="#"> <i class="fa-brands fa-telegram  fa-xl"></i></a>
+            <a href="#"><i class="fa-brands fa-facebook"></i></a>
+            <a href="#"> <i class="fa-brands fa-linkedin"></i></a>
+            <a href="#"> <i class="fa-brands fa-telegram"></i></a>
         </div>
     </div>
     <div class="header-top__user">

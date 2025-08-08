@@ -177,11 +177,11 @@ body {
 
 .site-header__top {
   background-color: rgb(255, 189, 57);
-  padding: 0.5rem;
   border-radius: 0.1rem;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
   justify-content: space-between;
   align-items: center;
+  max-height: clamp(5rem, 4.8rem + 0.0625vw, 7rem);
 }
 
 .header-top__nav .menu-list {
@@ -216,9 +216,10 @@ body {
 }
 
 .site-header__middle {
-  padding: 1rem;
+  padding: 2.5rem;
   gap: 2rem;
   justify-content: space-between;
+  align-items: center;
 }
 .search-bar {
   display: flex;

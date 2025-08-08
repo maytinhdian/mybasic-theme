@@ -12,26 +12,25 @@ console.log("Hello JS");
 //   });
 // });
 
-
 document.addEventListener("DOMContentLoaded", function () {
-  const swiper = new Swiper('.mySwiper', {
-    loop: true,                // vòng lặp vô hạn
-    spaceBetween: 20,          // khoảng cách giữa các slide
-    slidesPerView: 4,          // số slide hiển thị
+  const swiper = new Swiper(".mySwiper", {
+    loop: true, // vòng lặp vô hạn
+    spaceBetween: 20, // khoảng cách giữa các slide
+    slidesPerView: 1, // số slide hiển thị
     autoplay: {
-      delay: 3000,             // delay 3s
+      delay: 3000, // delay 3s
       disableOnInteraction: false, // tiếp tục chạy sau khi người dùng tương tác
     },
     navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
     },
-    breakpoints: {
-      0:     { slidesPerView: 1 },
-      640:   { slidesPerView: 2 },
-      768:   { slidesPerView: 3 },
-      1024:  { slidesPerView: 4 }
-    }
+    
+    // breakpoints: {
+    //   0:     { slidesPerView: 1 },
+    //   640:   { slidesPerView: 2 },
+    //   768:   { slidesPerView: 3 },
+    //   1024:  { slidesPerView: 4 }
+    // }
   });
 });
-

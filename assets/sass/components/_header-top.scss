@@ -1,11 +1,12 @@
 @use "../abstracts/" as *;
 .site-header__top {
   background-color: theme-color("primary-color");
-  padding: 0.5rem;
+  // padding: 0.5rem;
   border-radius: 0.1rem;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
   justify-content: space-between;
   align-items: center;
+  max-height: fluid-space(5rem, 7rem);
 }
 .header-top__nav {
   // width: 50%;
