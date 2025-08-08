@@ -14,6 +14,9 @@ console.log("Hello JS");
 
 document.addEventListener("DOMContentLoaded", function () {
   const swiper = new Swiper(".mySwiper", {
+    speed: 1000, // Thời gian chuyển slide (ms) -> càng cao càng mượt
+    effect: "fade", // Có thể đổi sang 'slide', 'cube', 'coverflow', 'flip'
+    grabCursor: true, // Con trỏ dạng bàn tay khi rê
     loop: true, // vòng lặp vô hạn
     spaceBetween: 20, // khoảng cách giữa các slide
     slidesPerView: 1, // số slide hiển thị
@@ -25,7 +28,7 @@ document.addEventListener("DOMContentLoaded", function () {
       nextEl: ".swiper-button-next",
       prevEl: ".swiper-button-prev",
     },
-    
+
     // breakpoints: {
     //   0:     { slidesPerView: 1 },
     //   640:   { slidesPerView: 2 },
