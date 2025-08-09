@@ -1,4 +1,4 @@
-<div class="site-header__top flex-row">
+<div class="site-header__top">
     <?php
     wp_nav_menu(array(
         'theme_location' => 'topbar',

@@ -1,12 +1,12 @@
 @use "../abstracts/" as *;
+@use "sass:color";
+
 .site-header__top {
-  background-color: theme-color("primary-color");
-  // padding: 0.5rem;
-  border-radius: 0.1rem;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-flow: row wrap;
   justify-content: space-between;
-  align-items: center;
-  max-height: fluid-space(5rem, 7rem);
+  background-color: color.scale(theme-color("primary-color"), $lightness: -20%);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1), 0 1px 0 rgba(0, 0, 0, 0.06);
 }
 .header-top__nav {
   // width: 50%;

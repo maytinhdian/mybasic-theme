@@ -42,3 +42,6 @@ require_once get_template_directory() . '/inc/customizer-kirki.php';
 
 //Default theme setup 
 require get_template_directory() . '/inc/theme-setup.php';
+
+// Custom icon cho menu
+require get_template_directory() . '/inc/menu-icons.php';

@@ -1,4 +1,6 @@
 @use "../abstracts/" as *;
+@use "sass:color";
+
 .site-header {
   &::after {
     content: "";
@@ -7,39 +9,24 @@
     left: 0;
     width: 100%;
     height: 6px; /* độ dày underline */
-    background: linear-gradient(
-      to right,
-      #ffd700,
-      /* vàng tươi */ #ff8c00 /* cam đậm */
-    );
   }
   &__middle {
     position: relative;
     padding: 2.5rem;
+    margin-bottom: 1rem;
     gap: 2rem;
     justify-content: space-between;
     align-items: center;
-    // background-color: theme-color("primary-color");
+    background: linear-gradient(
+      -90deg,
+      theme-color("primary-color"),
+      (color.scale(theme-color("primary-color"), $lightness: 60%))
+    );
+    // background: url("assets/images/header-bg.png") repeat center/cover;
     @debug "";
   }
+
   &__branding {
     @debug "";
   }
-  &::after {
-    content: "";
-    position: absolute;
-    bottom: 0; /* nằm sát đáy header */
-    left: 0;
-    width: 100%;
-    height: 6px; /* độ dày underline */
-    background: linear-gradient(
-      to right,
-      #ffd700,
-      /* vàng tươi */ #ff8c00 /* cam đậm */
-    );
-  }
 }
-// .site-nav {
-//   flex: 1;
-//   flex-grow: 1;
-// }
