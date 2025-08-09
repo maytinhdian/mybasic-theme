@@ -1,6 +1,8 @@
-@use "../abstracts/" as * ;
-.site-header{
-  &__bottom{
-     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+@use "../abstracts/" as *;
+.site-header {
+  &__bottom {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    color: #ffc300;
+    text-shadow: 0 0 10px rgba(255, 195, 0, 0.8);
   }
 }
