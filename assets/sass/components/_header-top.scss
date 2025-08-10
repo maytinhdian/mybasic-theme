@@ -33,20 +33,20 @@
     flex: 1;
   }
 }
-.header-top__user {
-  //  width: 10%;
-  text-align: right;
-  // padding-left: 3rem;
-  border: 1px solid theme-color("primary-color");
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.4rem;
-  inline-size: 28px;
-  block-size: 28px;
-  border-radius: 999px;
-  transition: all 0.2s ease;
-}
+// .header-top__user {
+//    width: 10%;
+//   text-align: right;
+//   // padding-left: 3rem;
+//   border: 1px solid theme-color("primary-color");
+//   display: inline-flex;
+//   align-items: center;
+//   justify-content: center;
+//   gap: 0.4rem;
+//   inline-size: 28px;
+//   block-size: 28px;
+//   border-radius: 999px;
+//   transition: all 0.2s ease;
+// }
 .header-top__social {
   & i {
     border: 1px solid theme-color("primary-color");

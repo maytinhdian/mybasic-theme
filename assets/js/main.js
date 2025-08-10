@@ -37,3 +37,37 @@ document.addEventListener("DOMContentLoaded", function () {
     // }
   });
 });
+
+
+(function () {
+  function closeAll(except) {
+    document.querySelectorAll('[data-user-menu].is-active').forEach(function(el){
+      if (el !== except) {
+        el.classList.remove('is-active');
+        const btn = el.querySelector('.user-menu__toggle');
+        if (btn) btn.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
+
+  document.addEventListener('click', function (e) {
+    const root = e.target.closest('[data-user-menu]');
+    const toggle = e.target.closest('.user-menu__toggle');
+
+    if (toggle && root) {
+      const willOpen = !root.classList.contains('is-active');
+      closeAll(root);
+      root.classList.toggle('is-active');
+      toggle.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
+      return;
+    }
+
+    // Click ra ngoài -> đóng
+    if (!root) closeAll();
+  });
+
+  // ESC để đóng
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeAll();
+  });
+})();

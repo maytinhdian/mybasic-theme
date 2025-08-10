@@ -19,7 +19,7 @@
             </div>
         </div>
         <div class="header-top__user">
-            <a href="#"><i class="fa-regular fa-user"></i></a>
+            <?php get_template_part('template-parts/header/user', 'menu'); ?>
         </div>
     </div>
 </div>
