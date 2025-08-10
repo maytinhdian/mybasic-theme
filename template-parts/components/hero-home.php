@@ -18,7 +18,7 @@
                                     <span class="mock__dot"></span>
                               </div>
                               <div class="mock__screen">
-                                    <span class="mock__screen-cta">Demo UI vàng–đen</span>
+                                    <span class="mock__screen-cta">Tìm hiểu thêm</span>
                               </div>
                         </div>
                   </div>

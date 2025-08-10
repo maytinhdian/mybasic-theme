@@ -1,0 +1,16 @@
+@use "../abstracts/" as *;
+.section {
+  &__header {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: baseline;
+    justify-content: space-between;
+  }
+}
+.header__title {
+  font-size: clamp(2.2rem, 2.8vw, 3.2rem);
+  margin: 0;
+}
+.header__subtitle {
+  color: theme-color("text-color-1");
+}

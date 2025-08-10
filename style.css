@@ -1,20 +1,610 @@
-/* Error: expected "$".
- *   ,
- * 6 | @for
- *   |     ^
- *   '
- *   assets\sass\abstracts\_index.scss 6:5  @use
- *   assets\sass\base\_base.scss 1:1        @forward
- *   assets\sass\base\_index.scss 2:1       @use
- *   assets\sass\main.scss 13:1             root stylesheet */
-
-body::before {
-  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
-      "Droid Sans Mono", monospace, monospace;
-  white-space: pre;
-  display: block;
-  padding: 1em;
-  margin-bottom: 1em;
-  border-bottom: 2px solid black;
-  content: 'Error: expected "$".\a   \2577 \a 6 \2502  @for\a   \2502      ^\a   \2575 \a   assets\\sass\\abstracts\\_index.scss 6:5  @use\a   assets\\sass\\base\\_base.scss 1:1        @forward\a   assets\\sass\\base\\_index.scss 2:1       @use\a   assets\\sass\\main.scss 13:1             root stylesheet';
+@charset "UTF-8";
+/*
+Theme Name: My Basic Theme
+Theme URI: https://example.com/
+Author: tnhalk
+Author URI: https://example.com/
+Description: A super basic WordPress theme
+Version: 1.0
+License: GNU General Public License v2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: mybasic-theme
+*/
+/* Andy Bell’s reset - modern và gọn */
+*, *::before, *::after {
+  box-sizing: border-box;
 }
+
+* {
+  margin: 0;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+input, button, textarea, select {
+  font: inherit;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+
+#root, #app {
+  isolation: isolate;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("assets/fonts/roboto/Roboto-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Roboto";
+  src: url("assets/fonts/roboto/Roboto-SemiBold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Roboto";
+  src: url("assets/fonts/roboto/Roboto-BlackItalic.ttf") format("truetype");
+  font-weight: normal;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Roboto";
+  src: url("assets/fonts/roboto/Roboto-Bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Roboto";
+  src: url("assets/fonts/roboto/Roboto-BoldItalic.ttf") format("truetype");
+  font-weight: bold;
+  font-style: italic;
+}
+@font-face {
+  font-family: "Coiny";
+  src: url("assets/fonts/coiny-regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Montserrat Variable";
+  src: url("assets/fonts/montserrat/Montserrat-VariableFont_wght.ttf") format("truetype-variations");
+  font-weight: 100 900;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Montserrat Variable";
+  src: url("assets/fonts/montserrat/Montserrat-Italic-VariableFont_wght.ttf") format("truetype-variations");
+  font-weight: 100 900;
+  font-style: italic;
+}
+/* Box sizing */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* 2. Reset margin + padding */
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol,
+li,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+  padding: 0;
+}
+
+/* 3. Remove list styles */
+ul,
+ol {
+  list-style: none;
+}
+
+/* 4. Remove default link underline */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* 5. Base body styles */
+body {
+  font-family: "Roboto", "Montserrat", sans-serif;
+  font-size: 1.6rem;
+  background-color: #0d0d0d;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 6. Images responsive */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* 7. Form elements inherit font */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* 8. Heading styles (basic) */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: bold;
+  line-height: 1.2;
+}
+
+html {
+  font-size: 62.5%; /* 62.5% của 16px = 10px */
+}
+
+body {
+  font-size: 1.6rem;
+  line-height: 1.6;
+  font-family: "Roboto", "Montserrat", sans-serif;
+  color: rgba(242, 242, 242, 0.9490196078);
+}
+
+a:hover {
+  color: #ffd966;
+}
+
+.site-header {
+  border-bottom: 1px solid rgba(255, 195, 0, 0.1);
+}
+
+.test {
+  font-size: clamp(1.5rem, 1.5rem + 8.5 * (100vw - 320px) / 880, 10rem);
+  background-color: aqua;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.site-main {
+  flex: 1;
+}
+
+.site-footer {
+  padding: 1rem 0;
+  background-color: #0d0d0d;
+  border-top: 2px solid rgba(255, 195, 0, 0.1);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.container--fluid {
+  max-width: 100%;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 999px;
+  padding: 0.7rem 1.1rem;
+  border: 2px solid transparent;
+  background: #ffc300;
+  transition: all 0.25s ease;
+  color: #1a1a1a;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+}
+
+.btn:focus-visible {
+  outline: 2px solid #ffd966;
+  outline-offset: 2px;
+}
+
+.btn--ghost {
+  background: transparent;
+  border-color: #ffc300;
+  color: rgba(242, 242, 242, 0.9490196078);
+}
+
+.btn--ghost:hover {
+  background: #0d0d0d;
+  color: #ffc300;
+}
+
+.btn--primary:hover {
+  background: #0d0d0d;
+  color: #ffc300;
+  border-color: #ffc300;
+}
+
+.site-nav__menu {
+  display: flex;
+  flex-flow: row nowrap;
+  gap: 2rem;
+}
+
+.swiper-slide img {
+  width: 100%;
+  border-radius: 8px;
+  display: block;
+}
+
+.site-header__top {
+  width: 100vw;
+  background-color: rgb(37.2, 37.2, 37.2);
+  border-bottom: 1px solid rgba(255, 195, 0, 0.1);
+}
+
+.header-top__wrapper {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  margin-top: 0.5rem;
+  padding: 0 1rem;
+  align-items: center;
+}
+
+.header-top__nav .menu-list {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  align-items: center;
+  gap: clamp(2rem, 1.8rem + 0.0625vw, 4rem);
+  flex: 1;
+}
+
+.header-top__user {
+  text-align: right;
+  border: 1px solid #ffc300;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  inline-size: 28px;
+  block-size: 28px;
+  border-radius: 999px;
+  transition: all 0.2s ease;
+}
+
+.header-top__social i {
+  border: 1px solid #ffc300;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  inline-size: 28px;
+  block-size: 28px;
+  border-radius: 999px;
+  transition: all 0.2s ease;
+}
+
+.header-top__cta {
+  display: flex;
+  text-align: left;
+  border-radius: 2rem;
+  gap: 2rem;
+}
+.header-top__cta a {
+  margin: 0.5rem;
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  font-size: 1.6rem;
+}
+.header-top__cta a:hover {
+  transform: scale(1.1);
+  font-weight: bold;
+}
+.header-top__cta a:hover i {
+  animation: fa-shake 2s;
+}
+
+.site-header__middle {
+  background: #0d0d0d;
+  padding: 2rem 0;
+}
+.site-header__branding {
+  font-family: "Coiny";
+}
+
+.header-middle__wrapper {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+.header-middle__wrapper nav {
+  font-family: "Coiny";
+}
+
+.site-header__bottom {
+  position: relative;
+  isolation: isolate;
+  background: radial-gradient(60% 60% at 20% 0%, rgba(255, 195, 0, 0.15), transparent 60%), radial-gradient(60% 60% at 80% 0%, rgba(255, 195, 0, 0.08), transparent 60%), linear-gradient(180deg, rgba(255, 255, 255, 0.04), transparent 30%);
+  border-bottom: 1px solid rgba(255, 195, 0, 0.1);
+}
+
+.search-bar {
+  display: flex;
+  border: 1px solid #ffc300;
+  border-radius: 999px;
+  overflow: hidden;
+  width: clamp(40rem, 30vw + 2rem, 40vw);
+  max-width: 40vw;
+}
+.search-bar .search-input {
+  flex: 1;
+  border: none;
+  padding: 0.6rem 1rem;
+  font-size: 1.5rem;
+  outline: none;
+}
+.search-bar .search-button {
+  background: #ffc300;
+  border: none;
+  padding: 0 1rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+.search-bar .search-button i {
+  pointer-events: none;
+}
+
+/* =====================
+       HERO
+===================== */
+.hero__inner {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 2rem;
+  align-items: center;
+  padding: clamp(2rem, 3vw + 1rem, 5rem) 0;
+}
+
+.hero__title {
+  font-size: clamp(28px, 4.5vw, 56px);
+  line-height: 1.1;
+  margin: 0 0 0.6rem;
+  letter-spacing: 0.2px;
+}
+
+.hero__title .glow {
+  color: #ffc300;
+  text-shadow: 0 0 10px rgba(255, 195, 0, 0.7), 0 0 30px rgba(255, 195, 0, 0.35);
+}
+
+.hero__desc {
+  color: #dcdcdc;
+  margin: 0 0 1.2rem;
+}
+
+.hero__actions {
+  display: flex;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+}
+
+.hero__media {
+  position: relative;
+}
+
+.mock {
+  border-radius: 5px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 195, 0, 0.15);
+  box-shadow: var(--shadow-soft), var(--shadow-edge);
+}
+
+.mock__bar {
+  display: flex;
+  gap: 0.35rem;
+  padding: 0.5rem 0.7rem;
+  background: #0f0f0f;
+  border-bottom: 1px solid rgba(255, 195, 0, 0.12);
+}
+
+.mock__dot {
+  inline-size: 0.7rem;
+  block-size: 0.7rem;
+  border-radius: 999px;
+  background: #2a2a2a;
+}
+
+.mock__screen {
+  aspect-ratio: 16/10;
+  background: linear-gradient(135deg, #151515, #0e0e0e);
+  display: grid;
+  place-items: center;
+}
+
+.mock__screen-cta {
+  display: inline-block;
+  padding: 0.5rem 0.8rem;
+  border-radius: 8px;
+  border: 1px dashed rgba(255, 195, 0, 0.4);
+  color: var(--yellow);
+}
+
+#dv .section-service {
+  background: linear-gradient(180deg, #0d0d0d, #0b0b0b);
+  margin: 2rem 0;
+}
+
+.services-cta__actions {
+  padding: 3rem 0;
+}
+
+.section__header {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.header__title {
+  font-size: clamp(2.2rem, 2.8vw, 3.2rem);
+  margin: 0;
+}
+
+.header__subtitle {
+  color: rgba(242, 242, 242, 0.9490196078);
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.flex-row-nowrap {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+
+.flex-center {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+.flex-between {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+}
+
+.m-0 {
+  margin: 0 !important;
+}
+
+.mt-1 {
+  margin-top: 1rem !important;
+}
+
+.mb-2 {
+  margin-bottom: 2rem !important;
+}
+
+.mx-auto {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.p-0 {
+  padding: 0 !important;
+}
+
+.pt-1 {
+  padding-top: 1rem !important;
+}
+
+.py-2 {
+  padding-top: 2rem !important;
+  padding-bottom: 2rem !important;
+}
+
+.w-100 {
+  width: 100% !important;
+}
+
+.h-100 {
+  height: 100% !important;
+}
+
+.w-auto {
+  width: auto !important;
+}
+
+.position-relative {
+  position: relative !important;
+}
+
+.position-absolute {
+  position: absolute !important;
+}
+
+.top-0 {
+  top: 0 !important;
+}
+
+.right-0 {
+  right: 0 !important;
+}
+
+.d-block {
+  display: block !important;
+}
+
+.d-inline {
+  display: inline !important;
+}
+
+.d-flex {
+  display: flex !important;
+}
+
+.d-none {
+  display: none !important;
+}
+
+.text-center {
+  text-align: center !important;
+}
+
+.text-left {
+  text-align: left !important;
+}
+
+.text-bold {
+  font-weight: bold !important;
+}
+
+.text-muted {
+  color: #6c757d !important;
+}
+
+.uppercase {
+  text-transform: uppercase !important;
+}
+
+/*# sourceMappingURL=style.css.map */

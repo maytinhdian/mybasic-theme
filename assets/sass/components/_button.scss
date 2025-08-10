@@ -1,7 +1,6 @@
 @use "../abstracts/" as *;
+$shadow-soft: 0 8px 24px rgba(0, 0, 0, 0.18);
 .btn {
-  --bg:  theme-color("primary-color");
-  --fg: #000;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -10,25 +9,25 @@
   padding: 0.7rem 1.1rem;
   border: 2px solid transparent;
   background: theme-color("primary-color");
-  color: var(--fg);
   transition: all 0.25s ease;
-  box-shadow: var(--shadow-soft);
+  color: theme-color("text-color-2");
+  box-shadow: $shadow-soft;
 }
 .btn:focus-visible {
-  outline: 2px solid var(--yellow-2);
+  outline: 2px solid theme-color("secondary-color");
   outline-offset: 2px;
 }
 .btn--ghost {
-  --bg: transparent;
-  --fg: var(--text);
-  border-color:  theme-color("primary-color");
+  background: transparent;
+  border-color: theme-color("primary-color");
+  color: theme-color("text-color-1");
 }
 .btn--ghost:hover {
-  background: #000;
-  color:  theme-color("primary-color");
+  background: theme-color("background-color");
+  color: theme-color("primary-color");
 }
 .btn--primary:hover {
-  background: #000;
-  color:  theme-color("primary-color");
-  border-color:  theme-color("primary-color");
+  background: theme-color("background-color");
+  color: theme-color("primary-color");
+  border-color: theme-color("primary-color");
 }

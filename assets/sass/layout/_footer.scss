@@ -1,5 +1,6 @@
 @use "../abstracts/" as *;
 .site-footer {
+  padding: 1rem 0;
   background-color: theme-color("background-color");
   border-top: 2px solid rgba(255, 195, 0, 0.1);
 }

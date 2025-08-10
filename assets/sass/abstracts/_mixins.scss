@@ -45,6 +45,7 @@
 
 @mixin addFontFace($font-faces) {
   @each $font-face in $font-faces {
+    // @debug #{$font-face};
     @font-face {
       font-family: map.get($font-face, "family");
       src: url(map.get($font-face, "path"))
