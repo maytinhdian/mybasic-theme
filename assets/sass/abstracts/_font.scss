@@ -1,0 +1,65 @@
+// abstracts/_fonts.scss
+// ======================
+// Import Google Fonts hoặc local font-face
+
+///Font-face variables
+/// @type sass:map
+
+$font-faces: (
+  (
+    "family": "Roboto",
+    "path": "assets/fonts/roboto/Roboto-Regular.ttf",
+    "format": "truetype",
+    "weight": normal,
+    "style": normal,
+  ),
+  (
+    "family": "Roboto",
+    "path": "assets/fonts/roboto/Roboto-SemiBold.ttf",
+    "format": "truetype",
+    "weight": bold,
+    "style": normal,
+  ),
+  (
+    "family": "Roboto",
+    "path": "assets/fonts/roboto/Roboto-BlackItalic.ttf",
+    "format": "truetype",
+    "weight": normal,
+    "style": italic,
+  ),
+  (
+    "family": "Roboto",
+    "path": "assets/fonts/roboto/Roboto-Bold.ttf",
+    "format": "truetype",
+    "weight": bold,
+    "style": normal,
+  ),
+  (
+    "family": "Roboto",
+    "path": "assets/fonts/roboto/Roboto-BoldItalic.ttf",
+    "format": "truetype",
+    "weight": bold,
+    "style": italic,
+  ),
+  (
+    "family": "Coiny",
+    "path": "assets/fonts/coiny-regular.ttf",
+    "format": "truetype",
+    "weight": normal,
+    "style": normal,
+  ),
+  (
+    "family": "Montserrat Variable",
+    "path": "assets/fonts/montserrat/Montserrat-VariableFont_wght.ttf",
+    "format": "truetype-variations",
+    "weight": 100 900,
+    "style": normal,
+  ),
+  (
+    "family": "Montserrat Variable",
+    "path": "assets/fonts/montserrat/Montserrat-Italic-VariableFont_wght.ttf",
+    "format": "truetype-variations",
+    "weight": 100 900,
+    "style": italic,
+  )
+) !default;

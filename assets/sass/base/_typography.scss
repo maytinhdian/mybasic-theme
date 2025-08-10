@@ -8,8 +8,9 @@ body {
   font-size: $font-size-base;
   line-height: 1.6;
   font-family: $font-family-base;
+  color: theme-color("text-color-white");
 }
 
 a:hover {
-  color: theme-color("accent-color");
+  color: theme-color("secondary-color");
 }

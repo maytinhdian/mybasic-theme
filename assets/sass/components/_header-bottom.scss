@@ -1,8 +1,20 @@
 @use "../abstracts/" as *;
 .site-header {
   &__bottom {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-    color: #ffc300;
-    text-shadow: 0 0 10px rgba(255, 195, 0, 0.8);
+    position: relative;
+    isolation: isolate;
+    background: radial-gradient(
+        60% 60% at 20% 0%,
+        rgba(255, 195, 0, 0.15),
+        transparent 60%
+      ),
+      radial-gradient(
+        60% 60% at 80% 0%,
+        rgba(255, 195, 0, 0.08),
+        transparent 60%
+      ),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.04), transparent 30%);
+    // max-height: 40rem;
+    border-bottom: 1px solid rgba(255, 195, 0, 0.1);
   }
 }

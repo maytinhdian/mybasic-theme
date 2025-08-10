@@ -1,0 +1,67 @@
+@use "../abstracts/" as *;
+
+/* =====================
+       HERO
+===================== */
+
+.hero__inner {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 2rem;
+  align-items: center;
+  padding: clamp(2rem, 3vw + 1rem, 5rem) 0;
+}
+.hero__title {
+  font-size: clamp(28px, 4.5vw, 56px);
+  line-height: 1.1;
+  margin: 0 0 0.6rem;
+  letter-spacing: 0.2px;
+}
+.hero__title .glow {
+  color: theme-color("primary-color");
+  text-shadow: 0 0 10px rgba(255, 195, 0, 0.7), 0 0 30px rgba(255, 195, 0, 0.35);
+}
+.hero__desc {
+  color: #dcdcdc;
+  margin: 0 0 1.2rem;
+}
+.hero__actions {
+  display: flex;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+}
+.hero__media {
+  position: relative;
+}
+.mock {
+  border-radius: 5px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 195, 0, 0.15);
+  box-shadow: var(--shadow-soft), var(--shadow-edge);
+}
+.mock__bar {
+  display: flex;
+  gap: 0.35rem;
+  padding: 0.5rem 0.7rem;
+  background: #0f0f0f;
+  border-bottom: 1px solid rgba(255, 195, 0, 0.12);
+}
+.mock__dot {
+  inline-size: 0.7rem;
+  block-size: 0.7rem;
+  border-radius: 999px;
+  background: #2a2a2a;
+}
+.mock__screen {
+  aspect-ratio: 16/10;
+  background: linear-gradient(135deg, #151515, #0e0e0e);
+  display: grid;
+  place-items: center;
+}
+.mock__screen-cta {
+  display: inline-block;
+  padding: 0.5rem 0.8rem;
+  border-radius: 8px;
+  border: 1px dashed rgba(255, 195, 0, 0.4);
+  color: var(--yellow);
+}

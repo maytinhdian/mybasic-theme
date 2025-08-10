@@ -1,2 +1,56 @@
+// -----------------------------------------------------------------------------
+// This file contains all application-wide Sass mixins.
+// -----------------------------------------------------------------------------
+@use "sass:map";
+@use "variables";
 
+//Breakpoint mixins
+// -----------------------------------------------------------------------------
+@mixin mb {
+  @media (min-width: map.get(variables.$breakpoint, "mb")) {
+    @content;
+  }
+}
 
+@mixin sm {
+  @media (min-width: map.get(variables.$breakpoint, "sm")) {
+    @content;
+  }
+}
+
+@mixin md {
+  @media (min-width: map.get(variables.$breakpoint, "md")) {
+    @content;
+  }
+}
+
+@mixin lg {
+  @media (min-width: map.get(variables.$breakpoint, "lg")) {
+    @content;
+  }
+}
+@mixin xl {
+  @media (min-width: map.get(variables.$breakpoint, "xl")) {
+    @content;
+  }
+}
+@mixin xxl {
+  @media (min-width: map.get(variables.$breakpoint, "xxl")) {
+    @content;
+  }
+}
+
+//Font-face mixin
+// -----------------------------------------------------------------------------
+
+@mixin addFontFace($font-faces) {
+  @each $font-face in $font-faces {
+    @font-face {
+      font-family: map.get($font-face, "family");
+      src: url(map.get($font-face, "path"))
+        format(map.get($font-face, "format"));
+      font-weight: map.get($font-face, "weight");
+      font-style: map.get($font-face, "style");
+    }
+  }
+}

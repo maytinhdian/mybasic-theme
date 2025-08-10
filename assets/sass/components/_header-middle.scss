@@ -1,32 +1,19 @@
 @use "../abstracts/" as *;
 @use "sass:color";
 
-.site-header {
-  &::after {
-    content: "";
-    position: absolute;
-    bottom: 0; /* nằm sát đáy header */
-    left: 0;
-    width: 100%;
-    height: 6px; /* độ dày underline */
-  }
-  &__middle {
-    position: relative;
-    padding: 2.5rem;
-    margin-bottom: 1rem;
-    gap: 2rem;
+.site-header__middle {
+  background: theme-color("background-color");
+  padding: 2rem 0;
+}
+.header-middle {
+  &__wrapper {
+    display: flex;
+    flex-flow: row wrap;
     justify-content: space-between;
     align-items: center;
-    background: linear-gradient(
-      -90deg,
-      theme-color("primary-color"),
-      (color.scale(theme-color("primary-color"), $lightness: 60%))
-    );
-    // background: url("assets/images/header-bg.png") repeat center/cover;
     @debug "";
   }
-
-  &__branding {
-    @debug "";
-  }
+  // & nav{
+  //   @include nav-menu;
+  // }
 }
