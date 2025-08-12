@@ -50,18 +50,33 @@ require get_template_directory() . '/inc/menu-icons.php';
 // require get_template_directory() . '/inc/login-page.php';
 // require get_template_directory() . '/inc/login-route.php';
 
-// Chuyển hướng về lại trang login custom khi đăng nhập thất bại
+
+// 1) Login fail -> quay lại trang login custom, giữ redirect_to nếu có
 add_action('wp_login_failed', function ($username) {
-    $login_page = home_url('/dang-nhap/'); // Slug trang login custom
-    wp_safe_redirect($login_page . '?login=failed');
+    $login_page  = home_url('/form-login/');
+    $redirect_to = isset($_POST['redirect_to']) ? esc_url_raw($_POST['redirect_to']) : '';
+    $url = add_query_arg(['login' => 'failed'], $login_page);
+    if ($redirect_to) $url = add_query_arg(['redirect_to' => $redirect_to], $url);
+    wp_safe_redirect($url);
     exit;
 });
 
-// Nếu chưa đăng nhập mà truy cập admin, chuyển hướng về trang login custom
+// 2) Đổi link trong email reset về trang custom /reset-password/
+add_filter('retrieve_password_message', function ($message, $key, $user_login, $user_data) {
+    $reset_url = add_query_arg(['key' => $key, 'login' => rawurlencode($user_login)], home_url('/reset-password/'));
+    $site = wp_specialchars_decode(get_option('blogname'), ENT_QUOTES);
+    $msg  = "Xin chào {$user_login},\n\n";
+    $msg .= "Bạn vừa yêu cầu đặt lại mật khẩu trên {$site}.\n";
+    $msg .= "Nhấp vào liên kết sau để đặt lại mật khẩu:\n{$reset_url}\n\n";
+    $msg .= "Nếu không phải bạn yêu cầu, hãy bỏ qua email này.\n";
+    return $msg;
+}, 10, 4);
+
+// (Tuỳ chọn) Nếu chưa đăng nhập mà vào /wp-admin, chuyển về form custom
 add_filter('login_redirect', function ($redirect_to, $request, $user) {
-    // Nếu có object user và đăng nhập thành công thì giữ nguyên
-    if (isset($user->ID)) {
-        return $redirect_to;
-    }
-    return home_url('/dang-nhap/');
+    if (isset($user->ID)) return $redirect_to; // đăng nhập OK
+    return $redirect_to;
 }, 10, 3);
+
+
+

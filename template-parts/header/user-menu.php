@@ -8,9 +8,9 @@ $is_logged_in = is_user_logged_in();
 $has_wc       = function_exists('wc_get_page_permalink');
 $account_url  = $has_wc ? wc_get_page_permalink('myaccount') : admin_url('profile.php');
 // $login_url    = $has_wc ? wp_login_url(home_url('/dang-nhap')) : wc_get_page_permalink('myaccount');
-$login_url    = home_url('/dang-nhap');
+$login_url    = home_url('/form-login');
 $register_url = function_exists('wp_registration_url') ? wp_registration_url() : wp_login_url() . '?action=register';
-$logout_url   = wp_logout_url(home_url('/dang-nhap'));
+$logout_url   = wp_logout_url(home_url('/form-login'));
 $user         = $is_logged_in ? wp_get_current_user() : null;
 ?>
 <div class="user-menu" data-user-menu>
