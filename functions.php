@@ -45,3 +45,23 @@ require get_template_directory() . '/inc/theme-setup.php';
 
 // Custom icon cho menu
 require get_template_directory() . '/inc/menu-icons.php';
+
+// Custom login page
+// require get_template_directory() . '/inc/login-page.php';
+// require get_template_directory() . '/inc/login-route.php';
+
+// Chuyển hướng về lại trang login custom khi đăng nhập thất bại
+add_action('wp_login_failed', function ($username) {
+    $login_page = home_url('/dang-nhap/'); // Slug trang login custom
+    wp_safe_redirect($login_page . '?login=failed');
+    exit;
+});
+
+// Nếu chưa đăng nhập mà truy cập admin, chuyển hướng về trang login custom
+add_filter('login_redirect', function ($redirect_to, $request, $user) {
+    // Nếu có object user và đăng nhập thành công thì giữ nguyên
+    if (isset($user->ID)) {
+        return $redirect_to;
+    }
+    return home_url('/dang-nhap/');
+}, 10, 3);

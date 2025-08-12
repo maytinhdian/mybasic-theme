@@ -12,5 +12,7 @@ inc/kirki/
 style.css
 style.css.map
 
+#Ignore các thư mục khác 
+
 # Don't ignore README.md, even if other .md files are ignored
 !README.md

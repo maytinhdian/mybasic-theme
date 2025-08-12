@@ -35,3 +35,6 @@ function mytheme_theme_setup()
     mybasic_register_menus();
 }
 add_action('after_setup_theme', 'mytheme_theme_setup');
+
+
+

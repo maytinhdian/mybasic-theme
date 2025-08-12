@@ -1,0 +1,98 @@
+@use "../abstracts/" as *;
+
+body.tmt-login-standalone {
+  background: theme-color("background-color");
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  .tmt-login-standalone__notice {
+    padding: 10px 12px;
+    border-radius: 6px;
+    font-size: 14px;
+    margin-bottom: 12px;
+    &--error {
+      background: rgba(231, 76, 60, 0.15);
+      border: 1px solid rgba(231, 76, 60, 0.35);
+      color: #ff6b6b;
+    }
+  }
+  .tmt-login-standalone__wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 16px;
+  }
+
+  .tmt-login-standalone__box {
+    background: theme-color("background-color");
+    padding: 28px;
+    border-radius: 10px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+    max-width: 420px;
+    width: 100%;
+  }
+
+  .tmt-login-standalone__title {
+    font-size: 24px;
+    margin-bottom: 16px;
+    color: theme-color("text-color-1");
+  }
+
+  label {
+    font-size: 13px;
+    color: #aaa;
+    display: block;
+    margin-bottom: 6px;
+  }
+
+  input[type="text"],
+  input[type="password"] {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    background: theme-color("background-color");
+    color: theme-color("text-color-1");
+    margin-bottom: 12px;
+  }
+
+  input[type="text"]:focus,
+  input[type="password"]:focus {
+    border-color: theme-color("primary-color");
+    outline: none;
+  }
+
+  .forgetmenot {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+  }
+
+  #wp-submit {
+    width: 100%;
+    padding: 10px 12px;
+    border: none;
+    background: theme-color("primary-color");
+    color: theme-color("background-color");
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+
+  .tmt-login-standalone__links {
+    margin-top: 12px;
+    text-align: center;
+
+    a {
+      color: theme-color("primary-color");
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  }
+}
