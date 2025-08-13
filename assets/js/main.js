@@ -38,27 +38,28 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-
 (function () {
   function closeAll(except) {
-    document.querySelectorAll('[data-user-menu].is-active').forEach(function(el){
-      if (el !== except) {
-        el.classList.remove('is-active');
-        const btn = el.querySelector('.user-menu__toggle');
-        if (btn) btn.setAttribute('aria-expanded', 'false');
-      }
-    });
+    document
+      .querySelectorAll("[data-user-menu].is-active")
+      .forEach(function (el) {
+        if (el !== except) {
+          el.classList.remove("is-active");
+          const btn = el.querySelector(".user-menu__toggle");
+          if (btn) btn.setAttribute("aria-expanded", "false");
+        }
+      });
   }
 
-  document.addEventListener('click', function (e) {
-    const root = e.target.closest('[data-user-menu]');
-    const toggle = e.target.closest('.user-menu__toggle');
+  document.addEventListener("click", function (e) {
+    const root = e.target.closest("[data-user-menu]");
+    const toggle = e.target.closest(".user-menu__toggle");
 
     if (toggle && root) {
-      const willOpen = !root.classList.contains('is-active');
+      const willOpen = !root.classList.contains("is-active");
       closeAll(root);
-      root.classList.toggle('is-active');
-      toggle.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
+      root.classList.toggle("is-active");
+      toggle.setAttribute("aria-expanded", willOpen ? "true" : "false");
       return;
     }
 
@@ -67,7 +68,24 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   // ESC để đóng
-  document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape') closeAll();
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") closeAll();
   });
 })();
+
+// Đổi tên của nút add to cart thành view cart sau khi bấm thêm sản phẩm vào giỏ hàng
+jQuery(function ($) {
+  $(document.body).on(
+    "added_to_cart",
+    function (_, fragments, cart_hash, $button) {
+      let btn = $button.closest(".product-card__actions").find(".button");
+
+      btn
+        .removeClass("added") // bỏ class để Woo không gắn icon tick
+        .html(
+          '<i class="fas fa-shopping-cart" style="margin-right:6px;"></i>VIEW CART'
+        )
+        .attr("href", wc_add_to_cart_params.cart_url);
+    }
+  );
+});
