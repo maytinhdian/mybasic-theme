@@ -84,6 +84,6 @@ defined('ABSPATH') || exit;
 
 require_once __DIR__ . '/inc/woocommerce/product-card.php';
 
-// Khởi động module product card
-add_action('after_setup_theme', ['TMT\\Theme\\WC_Product_Card', 'boot'], 20);
-
+// Boot class bố trí hook cho single product
+require_once __DIR__ . '/inc/woocommerce/single-product.php';
+\TMT\Theme\Woo\Single_Product::boot();
