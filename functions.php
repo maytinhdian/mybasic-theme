@@ -79,11 +79,8 @@ add_filter('login_redirect', function ($redirect_to, $request, $user) {
 }, 10, 3);
 
 
-// Woocommerce
-defined('ABSPATH') || exit;
 
-require_once __DIR__ . '/inc/woocommerce/product-card.php';
 
-// Boot class bố trí hook cho single product
-require_once __DIR__ . '/inc/woocommerce/single-product.php';
-\TMT\Theme\Woo\Single_Product::boot();
+//Woocommerce Initial Setup 
+require_once __DIR__ . '/inc/woocommerce/woocommerce-setup.php';
+

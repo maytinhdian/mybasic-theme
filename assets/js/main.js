@@ -89,3 +89,42 @@ jQuery(function ($) {
     }
   );
 });
+
+//Tabs js 
+// Horizontal & Vertical
+document.addEventListener('click', function(e){
+  const link = e.target.closest('.tmt-tabs__nav a');
+  if (!link) return;
+
+  const root = link.closest('[data-tmt-tabs]');
+  if (!root) return;
+  e.preventDefault();
+
+  const id = link.getAttribute('href');
+
+  // nav active
+  root.querySelectorAll('.tmt-tabs__nav li').forEach(li => li.classList.remove('active'));
+  link.parentElement.classList.add('active');
+
+  // panes active
+  root.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+  const target = root.querySelector(id);
+  if (target) target.classList.add('active');
+
+  // ARIA
+  root.querySelectorAll('.tmt-tabs__nav a[aria-selected]').forEach(a => a.setAttribute('aria-selected','false'));
+  link.setAttribute('aria-selected','true');
+});
+
+// Accordion (một item mở tại 1 thời điểm)
+document.addEventListener('click', function(e){
+  const btn = e.target.closest('.tmt-accordion__header');
+  if (!btn) return;
+
+  const item = btn.closest('.tmt-accordion__item');
+  const wrap = btn.closest('.tmt-tabs--accordion');
+  if (!item || !wrap) return;
+
+  wrap.querySelectorAll('.tmt-accordion__item').forEach(i => i.classList.remove('active'));
+  item.classList.add('active');
+});

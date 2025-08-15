@@ -6,3 +6,6 @@ global $product; ?>
   wc_get_template('single-product/product-image.php');
   ?>
 </div>
+
+
+

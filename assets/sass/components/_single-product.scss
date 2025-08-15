@@ -1,41 +1,41 @@
 /* 1) Container */
 .single-product div.product {
   display: grid;
-  grid-template-columns: minmax(0, 560px) 1fr;
+  grid-template-columns: minmax(0, 650px) 1fr;
   gap: 24px;
   grid-template-areas:
     "gallery summary"
     "tabs    tabs"
     "upsells upsells"; /* hoặc thêm "related related" nếu cần */
 }
-
 /* 2) Các grid item (chính xác theo DOM bạn gửi) */
 .single-product div.product > .tmt-sp__gallery {
   grid-area: gallery;
-  display: flex;
+  padding: 1rem;
+  border-radius: 6px; /* bo góc */
+  border: 2px solid#cca800;
   & .woocommerce-product-gallery {
-    justify-content: center;
-    align-items: center;
     margin: 0 auto;
-    max-width: 100% !important;
     width: 100% !important;
+    padding: 0.5rem;
     & .woocommerce-product-gallery__wrapper {
-      width: 100%;
+      gap: 1rem;
     }
   }
 }
-/* Ảnh trong gallery chiếm toàn bộ khung */
-.woocommerce-product-gallery__image img {
-  width: 100% !important;
-  height: auto !important;
-  object-fit: contain;
-}
+
 .single-product div.product > .summary.entry-summary {
   grid-area: summary;
+  // border-radius: 6px; /* bo góc */
+  // border: 2px solid#cca800;
   margin: 0 auto;
-   max-width: 100% !important;
-    width: 100% !important;
+  max-width: 100% !important;
+  width: 100% !important;
+  & > * {
+    margin-left: 1rem;
+  }
 }
+
 .single-product div.product > .tmt-sp__tabs {
   grid-area: tabs;
 }
@@ -47,15 +47,15 @@
 }
 
 .tmt-sp__meta .product_meta span {
-    display: block; /* Mỗi span là 1 dòng */
-    margin-bottom: 6px; /* Khoảng cách giữa các dòng */
+  display: block; /* Mỗi span là 1 dòng */
+  margin-bottom: 6px; /* Khoảng cách giữa các dòng */
 }
 
 .tmt-sp__meta .product_meta span a {
-    color: #ffc300; /* Màu link */
-    text-decoration: none;
+  color: #ffc300; /* Màu link */
+  text-decoration: none;
 }
 
 .tmt-sp__meta .product_meta span a:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }

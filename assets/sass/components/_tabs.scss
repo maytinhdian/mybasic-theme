@@ -1,0 +1,162 @@
+@use "../abstracts/" as *;
+
+// Variables
+$color-gold: theme-color("primary-color");
+$color-ink: theme-color("text-color-1");
+$color-muted: #6b7280;
+$color-stroke: #e5e7eb;
+
+$radius: 12px;
+$bp-sm: 640px; // mobile breakpoint for progressive enhancements
+
+.tmt-tabs {
+  // Base
+  .tab-pane {
+    display: none;
+  }
+  .tab-pane.active {
+    display: block;
+  }
+
+  // --- Horizontal ---
+  &--horizontal {
+    .tmt-tabs__nav {
+      display: flex;
+      gap: 0.5rem;
+      list-style: none;
+      padding: 0;
+      margin: 0 0 0.75rem;
+      border-bottom: 1px solid theme-color("secondary-color");
+      li {
+        position: relative;
+      }
+      a {
+        display: block;
+        padding: 0.625rem 0.875rem;
+        text-decoration: none;
+        color: $color-ink;
+        font-weight: 600;
+        border-radius: 10px 10px 0 0;
+        &:hover {
+          color: $color-gold;
+        }
+      }
+      li.active::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: -2px;
+        height: 3px;
+        background: $color-gold;
+      }
+    }
+    .tmt-tabs__content {
+      background: radial-gradient(
+        60% 60% at 20% 0%,
+        rgba(255, 195, 0, 0.15),
+        transparent 60%
+      ),
+      radial-gradient(
+        60% 60% at 80% 0%,
+        rgba(255, 195, 0, 0.08),
+        transparent 60%
+      ),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.04), transparent 30%);
+      border: 1px solid theme-color("border-color");
+      border-radius: $radius;
+      padding: 1rem;
+    }
+  }
+
+  // --- Accordion (mobile-first) ---
+  &--accordion {
+    .tmt-tabs__content {
+      border: 1px solid $color-stroke;
+      border-radius: $radius;
+      overflow: hidden;
+      background: #fff;
+    }
+    .tmt-accordion__item + .tmt-accordion__item {
+      border-top: 1px solid $color-stroke;
+    }
+    .tmt-accordion__header {
+      width: 100%;
+      text-align: left;
+      padding: 0.875rem 1rem;
+      background: #fff;
+      border: 0;
+      cursor: pointer;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      .caret {
+        transition: transform 0.2s ease;
+      }
+    }
+    .tmt-accordion__item.active .tmt-accordion__header .caret {
+      transform: rotate(180deg);
+    }
+    .tmt-accordion__body {
+      display: none;
+      padding: 0.875rem 1rem;
+      background: #fff;
+    }
+    .tmt-accordion__item.active .tmt-accordion__body {
+      display: block;
+    }
+  }
+
+  // --- Vertical ---
+  &--vertical {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: 1.125rem;
+
+    .tmt-tabs__sidebar {
+      position: sticky;
+      top: 24px;
+      height: fit-content;
+    }
+
+    .tmt-tabs__nav {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      background: #fff;
+      border: 1px solid $color-stroke;
+      border-radius: $radius;
+      overflow: hidden;
+      li + li {
+        border-top: 1px solid $color-stroke;
+      }
+      a {
+        display: block;
+        padding: 0.625rem 0.75rem;
+        text-decoration: none;
+        color: $color-ink;
+        font-weight: 600;
+      }
+      li.active a {
+        background: $color-ink;
+        color: $color-gold;
+      }
+    }
+
+    .tmt-tabs__main {
+      background: #fff;
+      border: 1px solid $color-stroke;
+      border-radius: $radius;
+      padding: 1rem;
+    }
+
+    // Mobile fallback: dồn về accordion
+    @media (max-width: $bp-sm) {
+      display: block;
+      .tmt-tabs__sidebar {
+        display: none;
+      }
+    }
+  }
+}

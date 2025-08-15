@@ -36,7 +36,7 @@ class WC_Product_Card {
         if (!is_a($product, \WC_Product::class) || !$product->is_visible()) return false;
 
         // Ví dụ chỉ áp dụng cho shop & category (bỏ nếu muốn áp mọi nơi)
-        if (! (is_shop() || is_product_taxonomy())) return false;
+        if (! (is_shop() || is_product_taxonomy() || is_product())) return false;
         return true;
     }
 

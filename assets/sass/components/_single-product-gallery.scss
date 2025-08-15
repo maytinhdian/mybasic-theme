@@ -1,0 +1,42 @@
+.tmt-sp__gallery {
+  .woocommerce-product-gallery {
+    position: relative;
+  }
+
+  .tmt-sp__badge--sale {
+    position: absolute; top: .75rem; left: .75rem;
+    background: #ffc300; color: #0d0d0d; padding: .25rem .5rem;
+    font-weight: 700; border-radius: .5rem;
+    z-index: 2;
+  }
+
+  .woocommerce-product-gallery__wrapper {
+    border: 1px solid #cca800;
+    background: #0d0d0d;
+    display: block;
+    aspect-ratio: 1 / 1; /* giữ khung vuông */
+    overflow: hidden;
+    img { width: 100%; height: 100%; object-fit: contain; }
+  }
+
+  .tmt-sp__gallery-overlays {
+    position: absolute; right: .75rem; bottom: .75rem; display: flex; gap: .5rem;
+    .tmt-sp__btn {
+      background: rgba(0,0,0,.6);
+      color: #ffd966; border: 1px solid #cca800; padding: .25rem .5rem; border-radius: .5rem;
+    }
+  }
+
+  .tmt-sp__gallery-controls {
+    margin-top: .75rem;
+    .tmt-grid { display: grid; gap: .5rem; }
+    @for $i from 2 through 6 {
+      .tmt-grid--cols-#{$i} { grid-template-columns: repeat(#{$i}, minmax(0, 1fr)); }
+    }
+    .tmt-sp__thumb-item {
+      border: 1px solid #333; background: #111; padding: 0; cursor: pointer; border-radius: .375rem;
+      img { width: 100%; height: 100%; display: block; object-fit: cover; }
+      &:hover { border-color: #cca800; }
+    }
+  }
+}
