@@ -92,6 +92,17 @@ add_filter('login_redirect', function ($redirect_to, $request, $user) {
     return $redirect_to;
 }, 10, 3);
 
+// Sidebar shop
+add_action('widgets_init', function () {
+    register_sidebar([
+        'name'          => 'Shop Sidebar',
+        'id'            => 'shop-sidebar',
+        'before_widget' => '<section id="%1$s" class="widget %2$s">',
+        'after_widget'  => '</section>',
+        'before_title'  => '<h3 class="widgettitle">',
+        'after_title'   => '</h3>',
+    ]);
+});
 
 //Woocommerce Initial Setup 
 require_once get_stylesheet_directory() . '/inc/woocommerce-setup.php';

@@ -220,3 +220,19 @@ document.addEventListener("click", function (e) {
 
   $(boot);
 })(jQuery);
+
+//Archive product
+(function () {
+  document.addEventListener("change", function (e) {
+    const field = e.target;
+    const form = field.closest("form.tmt-filterbar");
+    if (!form) return;
+
+    if (
+      field.tagName === "SELECT" ||
+      (field.tagName === "INPUT" && field.type === "checkbox")
+    ) {
+      form.requestSubmit(); // auto submit
+    }
+  });
+})();

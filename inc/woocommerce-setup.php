@@ -59,6 +59,7 @@ final class Setup
         $single = $base . 'single-product.php';
         $cart = $base . 'cart.php';
         $checkout = $base . 'checkout.php';
+        $archive = $base . 'archive-product.php';
 
         if (is_readable($card)) {
             require_once $card;
@@ -83,6 +84,12 @@ final class Setup
             require_once $checkout;
             if (class_exists(\TMT\Theme\Woo\WC_Checkout::class)) {
                 \TMT\Theme\Woo\WC_Checkout::boot();
+            }
+        }
+         if (is_readable($archive)) {
+            require_once $archive;
+            if (class_exists(\TMT\Theme\Woo\WC_Archive_Product::class)) {
+                \TMT\Theme\Woo\WC_Archive_Product::boot();
             }
         }
     }

@@ -80,7 +80,7 @@ class WC_Product_Card {
             $pct = round((($reg - $sale) / $reg) * 100);
             $badge .= '<span class="product-card__badge product-card__badge--sale">-' . esc_html($pct) . '%</span>';
         }
-        $badge .= '<span class="product-card__badge product-card__badge--new">NEW</span>';
+        $badge .= '<span class="product-card__badge product-card__badge--new">Sale</span>';
 
         $oos = $product->is_in_stock() ? '' : '<span class="product-card__badge product-card__badge--oos">Hết hàng</span>';
 
