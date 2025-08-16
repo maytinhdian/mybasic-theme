@@ -53,10 +53,12 @@ final class Setup
 
         // Ưu tiên autoload PSR-4 nếu có. Nếu chưa, fallback require file.
         // Dùng get_stylesheet_directory() để child theme có thể override.
-        $base = trailingslashit(get_stylesheet_directory()) . 'template-parts/woocommerce/';
+        $base = trailingslashit(get_stylesheet_directory()) . 'inc/woocommerce/';
 
         $card   = $base . 'product-card.php';
         $single = $base . 'single-product.php';
+        $cart = $base . 'cart.php';
+        $checkout = $base . 'checkout.php';
 
         if (is_readable($card)) {
             require_once $card;
@@ -69,6 +71,18 @@ final class Setup
             require_once $single;
             if (class_exists(\TMT\Theme\Woo\WC_Single_Product::class)) {
                 \TMT\Theme\Woo\WC_Single_Product::boot();
+            }
+        }
+        if (is_readable($cart)) {
+            require_once $cart;
+            if (class_exists(\TMT\Theme\Woo\WC_Cart::class)) {
+                \TMT\Theme\Woo\WC_Cart::boot();
+            }
+        }
+        if (is_readable($checkout)) {
+            require_once $checkout;
+            if (class_exists(\TMT\Theme\Woo\WC_Checkout::class)) {
+                \TMT\Theme\Woo\WC_Checkout::boot();
             }
         }
     }

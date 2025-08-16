@@ -90,59 +90,133 @@ jQuery(function ($) {
   );
 });
 
-//Tabs js 
+//Tabs js
 // Horizontal & Vertical
-document.addEventListener('click', function(e){
-  const link = e.target.closest('.tmt-tabs__nav a');
+document.addEventListener("click", function (e) {
+  const link = e.target.closest(".tmt-tabs__nav a");
   if (!link) return;
 
-  const root = link.closest('[data-tmt-tabs]');
+  const root = link.closest("[data-tmt-tabs]");
   if (!root) return;
   e.preventDefault();
 
-  const id = link.getAttribute('href');
+  const id = link.getAttribute("href");
 
   // nav active
-  root.querySelectorAll('.tmt-tabs__nav li').forEach(li => li.classList.remove('active'));
-  link.parentElement.classList.add('active');
+  root
+    .querySelectorAll(".tmt-tabs__nav li")
+    .forEach((li) => li.classList.remove("active"));
+  link.parentElement.classList.add("active");
 
   // panes active
-  root.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+  root
+    .querySelectorAll(".tab-pane")
+    .forEach((p) => p.classList.remove("active"));
   const target = root.querySelector(id);
-  if (target) target.classList.add('active');
+  if (target) target.classList.add("active");
 
   // ARIA
-  root.querySelectorAll('.tmt-tabs__nav a[aria-selected]').forEach(a => a.setAttribute('aria-selected','false'));
-  link.setAttribute('aria-selected','true');
+  root
+    .querySelectorAll(".tmt-tabs__nav a[aria-selected]")
+    .forEach((a) => a.setAttribute("aria-selected", "false"));
+  link.setAttribute("aria-selected", "true");
 });
 
 // Accordion (một item mở tại 1 thời điểm)
-document.addEventListener('click', function(e){
-  const btn = e.target.closest('.tmt-accordion__header');
+document.addEventListener("click", function (e) {
+  const btn = e.target.closest(".tmt-accordion__header");
   if (!btn) return;
 
-  const item = btn.closest('.tmt-accordion__item');
-  const wrap = btn.closest('.tmt-tabs--accordion');
+  const item = btn.closest(".tmt-accordion__item");
+  const wrap = btn.closest(".tmt-tabs--accordion");
   if (!item || !wrap) return;
 
-  wrap.querySelectorAll('.tmt-accordion__item').forEach(i => i.classList.remove('active'));
-  item.classList.add('active');
+  wrap
+    .querySelectorAll(".tmt-accordion__item")
+    .forEach((i) => i.classList.remove("active"));
+  item.classList.add("active");
 });
 
-
-//Cart js 
-(function($){
-  $(document).on('click','.qty-btn',function(){
-    const $cell = $(this).closest('td');
-    const $input = $cell.find('.qty-input');
+//Cart js
+(function ($) {
+  $(document).on("click", ".qty-btn", function () {
+    const $cell = $(this).closest("td");
+    const $input = $cell.find(".qty-input");
     let v = parseInt($input.val() || 0, 10);
-    if($(this).hasClass('qty-btn--plus')) v++;
-    if($(this).hasClass('qty-btn--minus')) v = Math.max(0, v-1);
-    $input.val(v).trigger('change');
+    if ($(this).hasClass("qty-btn--plus")) v++;
+    if ($(this).hasClass("qty-btn--minus")) v = Math.max(0, v - 1);
+    $input.val(v).trigger("change");
   });
 
   // Auto update khi đổi số lượng
-  $(document).on('change','.qty-input',function(){
-    $('button[name="update_cart"]').prop('disabled', false).trigger('click');
+  $(document).on("change", ".qty-input", function () {
+    $('button[name="update_cart"]').prop("disabled", false).trigger("click");
   });
+})(jQuery);
+
+//Cart js new
+
+(function ($) {
+  "use strict";
+
+  function attachQty($root) {
+    // Tìm tất cả quantity input trong cart form
+    $root.find(".woocommerce-cart-form .quantity").each(function () {
+      var $q = $(this);
+      if ($q.find(".tmt-qty-btn").length) return; // đã gắn nút rồi
+
+      var $input = $q.find("input.qty");
+      if (!$input.length) return;
+
+      // Thêm nút -
+      $(
+        '<button type="button" class="tmt-qty-btn tmt-qty-minus" aria-label="Giảm">−</button>'
+      ).insertBefore($input);
+
+      // Thêm nút +
+      $(
+        '<button type="button" class="tmt-qty-btn tmt-qty-plus" aria-label="Tăng">+</button>'
+      ).insertAfter($input);
+    });
+  }
+
+  function changeQty($input, delta) {
+    var step = parseFloat($input.attr("step")) || 1;
+    var min = parseFloat($input.attr("min"));
+    if (isNaN(min)) min = 1;
+    var max = parseFloat($input.attr("max"));
+    var val = parseFloat($input.val()) || min;
+
+    val = val + delta * step;
+    if (!isNaN(max)) val = Math.min(val, max);
+    val = Math.max(val, min);
+
+    $input.val(val).trigger("change");
+  }
+
+  function bindEvents($root) {
+    // Click +/-
+    $root.on("click", ".tmt-qty-minus", function () {
+      changeQty($(this).siblings("input.qty"), -1);
+    });
+    $root.on("click", ".tmt-qty-plus", function () {
+      changeQty($(this).siblings("input.qty"), +1);
+    });
+  }
+
+  function boot() {
+    var $doc = $(document);
+    attachQty($doc);
+    bindEvents($doc);
+
+    // WooCommerce có các sự kiện khi cart được cập nhật bằng AJAX
+    $doc.on(
+      "updated_wc_div updated_cart_totals wc_fragments_refreshed",
+      function () {
+        attachQty($doc);
+      }
+    );
+  }
+
+  $(boot);
 })(jQuery);

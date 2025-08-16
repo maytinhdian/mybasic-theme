@@ -1,0 +1,236 @@
+// Tone
+$cko-gold: #ffbd39;
+$cko-gold-2: #cca800;
+$cko-black: #0d0d0d;
+$cko-deep: #121212;
+$cko-text: #f2f2f2;
+$cko-muted: #b8b8b8;
+$radius: 16px;
+
+.tmt-cko {
+  background: radial-gradient(
+      1200px 600px at 20% -10%,
+      rgba($cko-gold, 0.08),
+      transparent 60%
+    ),
+    linear-gradient(180deg, #0a0a0a, #000);
+  color: $cko-text;
+  padding: clamp(16px, 2vw, 28px) 0;
+
+  &__container {
+    max-width: 1100px;
+  }
+
+  &__head {
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    justify-content: space-between;
+    .tmt-cko__title {
+      font-size: clamp(22px, 2.2vw, 28px);
+      font-weight: 700;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+    .tmt-ico--cart {
+      color: $cko-gold;
+    }
+
+    .tmt-cko__steps {
+      display: flex;
+      gap: 12px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      font-size: 14px;
+      color: $cko-muted;
+      li {
+        position: relative;
+        padding-left: 18px;
+      }
+      li.is-done {
+        color: $cko-gold;
+      }
+      li.is-current {
+        color: $cko-text;
+        font-weight: 600;
+      }
+      li + li::before {
+        content: "›";
+        position: absolute;
+        left: -10px;
+        color: $cko-gold-2;
+      }
+    }
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr 420px;
+    gap: 18px;
+  }
+  @media (max-width: 980px) {
+    &__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .tmt-card {
+    background: $cko-deep;
+    border: 1px solid rgba($cko-gold-2, 0.35);
+    border-radius: $radius;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.02);
+    padding: clamp(14px, 2vw, 18px);
+    &__title {
+      font-size: 16px;
+      margin: 0 0 12px;
+      color: $cko-gold;
+      font-weight: 700;
+      letter-spacing: 0.2px;
+    }
+  }
+
+  // Form cosmetics
+  .tmt-field {
+    margin-bottom: 12px !important;
+  }
+  .tmt-label {
+    display: block;
+    font-size: 12px;
+    color: $cko-muted;
+    margin-bottom: 6px;
+  }
+  .tmt-input,
+  .select2-container--default .select2-selection--single {
+    background: #0f0f0f !important;
+    border: 1px solid rgba($cko-gold-2, 0.35) !important;
+    color: $cko-text !important;
+    border-radius: 10px !important;
+    padding: 10px 12px !important;
+    min-height: 42px;
+    outline: none;
+  }
+  .tmt-input:focus {
+    border-color: $cko-gold !important;
+    box-shadow: 0 0 0 2px rgba($cko-gold, 0.25);
+  }
+
+  // 1/2 width helpers
+  .tmt-col-6 {
+    width: 100%;
+  }
+  @media (min-width: 640px) {
+    .tmt-cko .tmt-col-6,
+    .tmt-col-6 {
+      width: calc(50% - 6px);
+      display: inline-block;
+      vertical-align: top;
+    }
+    .tmt-field.tmt-col-6 + .tmt-field.tmt-col-6 {
+      margin-left: 12px;
+    }
+  }
+
+  // Login + Coupon block
+  &__quick {
+    margin-bottom: 12px;
+    .woocommerce-form-login,
+    .checkout_coupon {
+      background: #0f0f0f;
+      border: 1px dashed rgba($cko-gold-2, 0.5);
+      border-radius: 12px;
+      padding: 12px;
+      margin: 0 0 10px;
+    }
+    .form-row input {
+      background: #0f0f0f;
+      color: $cko-text;
+      border: 1px solid rgba($cko-gold-2, 0.35);
+      border-radius: 10px;
+    }
+  }
+
+  // Order summary
+  &__summary {
+    .shop_table,
+    .woocommerce-checkout-review-order-table {
+      width: 100%;
+      border-collapse: collapse;
+      color: $cko-text;
+      th,
+      td {
+        padding: 10px 0;
+        border-top: 1px solid rgba($cko-gold-2, 0.35);
+      }
+      thead th {
+        color: $cko-muted;
+        font-weight: 600;
+        border-top: 0;
+      }
+      tfoot th {
+        color: $cko-muted;
+      }
+      tfoot .order-total th,
+      tfoot .order-total td {
+        color: $cko-gold;
+        font-weight: 700;
+        font-size: 16px;
+      }
+    }
+    .wc_payment_methods {
+      border-top: 1px solid rgba($cko-gold-2, 0.35);
+      margin-top: 10px;
+      padding-top: 10px;
+    }
+  }
+
+  // Buttons
+  .button,
+  button,
+  .wc-forward {
+    background: linear-gradient(180deg, $cko-gold, darken($cko-gold, 8%));
+    color: #1a1a1a;
+    border: 0;
+    border-radius: 12px;
+    font-weight: 700;
+    padding: 11px 14px;
+    cursor: pointer;
+  }
+  .button:hover {
+    filter: brightness(1.06);
+  }
+  .place-order .button {
+    width: 100%;
+    font-size: 16px;
+    box-shadow: 0 6px 18px rgba($cko-gold, 0.25);
+  }
+
+  // Notices
+  .woocommerce-NoticeGroup,
+  .woocommerce-error,
+  .woocommerce-message {
+    background: #1a1a1a;
+    border: 1px solid rgba($cko-gold-2, 0.5);
+    color: $cko-text;
+    border-radius: 10px;
+    padding: 10px 12px;
+  }
+
+  // Little badges
+  &__assurance {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 12px;
+    .tmt-badge {
+      font-size: 12px;
+      color: $cko-muted;
+      border: 1px solid rgba($cko-gold-2, 0.35);
+      border-radius: 999px;
+      padding: 6px 10px;
+    }
+  }
+}

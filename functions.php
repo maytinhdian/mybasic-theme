@@ -94,5 +94,5 @@ add_filter('login_redirect', function ($redirect_to, $request, $user) {
 
 
 //Woocommerce Initial Setup 
-require_once get_stylesheet_directory() . '/inc/woocommerce/woocommerce-setup.php';
+require_once get_stylesheet_directory() . '/inc/woocommerce-setup.php';
 \TMT\Theme\Woo\Setup::boot();
