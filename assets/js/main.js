@@ -128,3 +128,21 @@ document.addEventListener('click', function(e){
   wrap.querySelectorAll('.tmt-accordion__item').forEach(i => i.classList.remove('active'));
   item.classList.add('active');
 });
+
+
+//Cart js 
+(function($){
+  $(document).on('click','.qty-btn',function(){
+    const $cell = $(this).closest('td');
+    const $input = $cell.find('.qty-input');
+    let v = parseInt($input.val() || 0, 10);
+    if($(this).hasClass('qty-btn--plus')) v++;
+    if($(this).hasClass('qty-btn--minus')) v = Math.max(0, v-1);
+    $input.val(v).trigger('change');
+  });
+
+  // Auto update khi đổi số lượng
+  $(document).on('change','.qty-input',function(){
+    $('button[name="update_cart"]').prop('disabled', false).trigger('click');
+  });
+})(jQuery);

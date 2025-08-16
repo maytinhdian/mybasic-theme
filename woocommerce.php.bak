@@ -1,0 +1,7 @@
+<?php
+/* Template “cứu hỏa” cho mọi trang Woo */
+get_header();
+echo '<main id="primary" class="site-main">';
+woocommerce_content(); // Woo tự quyết hiển thị shop/single/shortcode
+echo '</main>';
+get_footer();

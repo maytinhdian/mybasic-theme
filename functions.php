@@ -1,4 +1,5 @@
 <?php
+
 function mybasic_enqueue_styles()
 {
     wp_enqueue_style('mybasic-style', get_stylesheet_uri());
@@ -35,6 +36,19 @@ function theme_enqueue_scripts()
     );
 }
 add_action('wp_enqueue_scripts', 'theme_enqueue_scripts');
+
+//Register Sidebar 
+add_action('widgets_init', function () {
+    register_sidebar([
+        'name'          => __('Primary Sidebar', 'tmt'),
+        'id'            => 'primary',
+        'description'   => __('Main sidebar area', 'tmt'),
+        'before_widget' => '<section id="%1$s" class="widget %2$s">',
+        'after_widget'  => '</section>',
+        'before_title'  => '<h2 class="widget-title">',
+        'after_title'   => '</h2>',
+    ]);
+});
 
 //Kirki Framework
 require_once get_template_directory() . '/inc/kirki/kirki.php';
@@ -79,8 +93,6 @@ add_filter('login_redirect', function ($redirect_to, $request, $user) {
 }, 10, 3);
 
 
-
-
 //Woocommerce Initial Setup 
-require_once __DIR__ . '/inc/woocommerce/woocommerce-setup.php';
-
+require_once get_stylesheet_directory() . '/inc/woocommerce/woocommerce-setup.php';
+\TMT\Theme\Woo\Setup::boot();

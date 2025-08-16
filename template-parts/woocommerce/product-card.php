@@ -1,17 +1,28 @@
 <?php
-namespace TMT\Theme;
+namespace TMT\Theme\Woo;
 
 defined('ABSPATH') || exit;
 
 class WC_Product_Card {
+    private static bool $booted = false;
+
     public static function boot(): void {
-        // Cho phép tắt/bật bằng filter nếu cần
+        if (self::$booted) return;
+        self::$booted = true;
+
         if (false === apply_filters('tmt_wc_product_card_enabled', true)) return;
 
-        // Gỡ mặc định
-        add_action('init', [__CLASS__, 'unhook_defaults']);
+        // 1) Gỡ hook mặc định NGAY LẬP TỨC (Woo đã load wc-template-hooks ở plugin load)
+        self::unhook_defaults();
 
-        // Bơm markup mới
+        // 2) Gỡ lại SỚM ở init (phòng plugin/theme khác gắn thêm)
+        add_action('init', [__CLASS__, 'unhook_defaults'], 0);
+
+        // 3) (Tùy chọn) Gỡ “cứng” mọi callback mặc định còn sót trước khi render mỗi loop
+        add_action('woocommerce_before_shop_loop', [__CLASS__, 'nuclear_unhook'], 0);
+        add_action('woocommerce_before_single_product', [__CLASS__, 'nuclear_unhook'], 0); // nếu có loop upsells/related
+
+        // 4) Gắn markup mới – CHỈ 1 LẦN
         add_action('woocommerce_before_shop_loop_item',        [__CLASS__, 'open_card'], 1);
         add_action('woocommerce_before_shop_loop_item_title',  [__CLASS__, 'media'], 10);
         add_action('woocommerce_shop_loop_item_title',         [__CLASS__, 'title'], 10);
@@ -21,6 +32,7 @@ class WC_Product_Card {
     }
 
     public static function unhook_defaults(): void {
+        // Gỡ các template mặc định của Woo
         remove_action('woocommerce_before_shop_loop_item',        'woocommerce_template_loop_product_link_open', 10);
         remove_action('woocommerce_before_shop_loop_item_title',  'woocommerce_show_product_loop_sale_flash',   10);
         remove_action('woocommerce_before_shop_loop_item_title',  'woocommerce_template_loop_product_thumbnail',10);
@@ -31,12 +43,22 @@ class WC_Product_Card {
         remove_action('woocommerce_after_shop_loop_item',         'woocommerce_template_loop_add_to_cart',      10);
     }
 
+    // “Nuclear option” – đảm bảo không còn callback nào khác dính vào 4 hook loop
+    public static function nuclear_unhook(): void {
+        // Nếu vẫn còn double, mở 4 dòng dưới (xóa mọi callback ở các hook vòng lặp)
+        // remove_all_actions('woocommerce_before_shop_loop_item');
+        // remove_all_actions('woocommerce_before_shop_loop_item_title');
+        // remove_all_actions('woocommerce_shop_loop_item_title');
+        // remove_all_actions('woocommerce_after_shop_loop_item_title');
+        // remove_all_actions('woocommerce_after_shop_loop_item');
+        // Sau đó, các hook của class này sẽ gắn lại card từ đầu (đã add ở boot()).
+    }
+
     private static function guard(): bool {
         global $product;
         if (!is_a($product, \WC_Product::class) || !$product->is_visible()) return false;
-
-        // Ví dụ chỉ áp dụng cho shop & category (bỏ nếu muốn áp mọi nơi)
-        if (! (is_shop() || is_product_taxonomy() || is_product())) return false;
+        // Chỉ áp dụng ở archive/loop (shop, category, tag). Tránh chạy ở single trừ upsell/related.
+        if (! (is_shop() || is_product_taxonomy() || is_product_tag())) return false;
         return true;
     }
 
@@ -51,7 +73,6 @@ class WC_Product_Card {
         $permalink = get_permalink($product->get_id());
         $img = $product->get_image('woocommerce_thumbnail', ['class'=>'product-card__img'], false);
 
-        // Badge %
         $badge = '';
         $reg = (float)$product->get_regular_price();
         $sale = (float)$product->get_sale_price();
@@ -59,10 +80,8 @@ class WC_Product_Card {
             $pct = round((($reg - $sale) / $reg) * 100);
             $badge .= '<span class="product-card__badge product-card__badge--sale">-' . esc_html($pct) . '%</span>';
         }
-        // NEW/HOT demo (bạn có thể thay bằng logic tag/attr riêng)
         $badge .= '<span class="product-card__badge product-card__badge--new">NEW</span>';
 
-        // Hết hàng
         $oos = $product->is_in_stock() ? '' : '<span class="product-card__badge product-card__badge--oos">Hết hàng</span>';
 
         echo '<div class="product-card__media">';
@@ -74,11 +93,8 @@ class WC_Product_Card {
     public static function title(): void {
         if (!self::guard()) return;
         echo '<h3 class="product-card__title"><a href="'.esc_url(get_permalink()).'">'.esc_html(get_the_title()).'</a></h3>';
-        // Excerpt ngắn (2–3 dòng)
         $excerpt = wp_strip_all_tags( get_the_excerpt() ?: get_post_meta(get_the_ID(), '_short_description', true) );
-        if ($excerpt) {
-            echo '<p class="product-card__excerpt">'.esc_html($excerpt).'</p>';
-        }
+        if ($excerpt) echo '<p class="product-card__excerpt">'.esc_html($excerpt).'</p>';
     }
 
     public static function meta(): void {
@@ -94,7 +110,7 @@ class WC_Product_Card {
     public static function actions(): void {
         if (!self::guard()) return;
         echo '<div class="product-card__actions">';
-        \woocommerce_template_loop_add_to_cart();
+        \woocommerce_template_loop_add_to_cart(); // dùng lại template Woo cho nút
         echo '</div>';
     }
 

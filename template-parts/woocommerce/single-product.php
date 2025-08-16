@@ -4,7 +4,7 @@ namespace TMT\Theme\Woo;
 
 if (! defined('ABSPATH')) exit;
 
-class Single_Product
+class WC_Single_Product
 {
     public static function boot()
     {
