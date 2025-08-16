@@ -1,0 +1,45 @@
+/* 1) Biến UL thành Grid và loại bỏ clearfix */
+.products {
+  --card-min: 240px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(var(--card-min), 1fr));
+  grid-auto-flow: row;
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  /* QUAN TRỌNG: đừng để ::before/::after trở thành grid items */
+  &::before,
+  &::after {
+    content: none !important;
+    display: none !important;
+  }
+
+  /* Chỉ chấp nhận li.product là item của grid */
+  > :not(li.product) { display: none !important; }
+}
+
+/* 2) Reset style cũ của Woo để không phá Grid */
+.products li.product {
+  float: none !important;   /* Woo mặc định float */
+  width: auto !important;   /* bỏ width % theo columns-X */
+  margin: 0 !important;     /* dùng gap của grid thay vì margin item */
+  min-width: 0;             /* tránh text làm tràn ô */
+}
+
+/* 3) Nếu Woo thêm class columns-X thì vẫn giữ Grid auto-fit */
+.products.columns-1,
+.products.columns-2,
+.products.columns-3,
+.products.columns-4,
+.products.columns-5,
+.products.columns-6 {
+  grid-template-columns: repeat(auto-fit, minmax(var(--card-min), 1fr));
+}
+
+/* 4) Bên trong card cho cao đều & footer bám đáy (tuỳ chọn) */
+.product-card { display: flex; flex-direction: column; height: 100%; }
+.product-card__media { aspect-ratio: 1/1; overflow: hidden; }
+.product-card__img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.product-card__actions { margin-top: auto; }
