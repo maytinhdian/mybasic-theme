@@ -60,6 +60,7 @@ final class Setup
         $cart = $base . 'cart.php';
         $checkout = $base . 'checkout.php';
         $archive = $base . 'archive-product.php';
+        $sale_badge = $base . 'sale-badge.php';
 
         if (is_readable($card)) {
             require_once $card;
@@ -86,10 +87,16 @@ final class Setup
                 \TMT\Theme\Woo\WC_Checkout::boot();
             }
         }
-         if (is_readable($archive)) {
+        if (is_readable($archive)) {
             require_once $archive;
             if (class_exists(\TMT\Theme\Woo\WC_Archive_Product::class)) {
                 \TMT\Theme\Woo\WC_Archive_Product::boot();
+            }
+        }
+        if (is_readable($sale_badge)) {
+            require_once $sale_badge;
+            if (class_exists(\TMT\Theme\Woo\WC_Sale_Badge::class)) {
+                \TMT\Theme\Woo\WC_Sale_Badge::boot(); // ✔ boot trực tiếp, không dùng after_setup_theme
             }
         }
     }

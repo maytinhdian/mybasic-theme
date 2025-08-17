@@ -1,0 +1,105 @@
+/* media container phải relative để badge absolute không đẩy layout */
+.product-card__media {
+  position: relative;
+  overflow: hidden;
+
+  .product-card__image img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+}
+
+/* BASE sale badge (overlay) */
+.sale-badge {
+  position: absolute; /* <-- then chốt: overlay */
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  line-height: 1;
+  color: #fff;
+  letter-spacing: 0.3px;
+  user-select: none;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.28);
+
+  .sale-badge__label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    opacity: 0.95;
+    margin-right: 0.35rem;
+  }
+  .sale-badge__pct {
+    font-size: 1.02rem;
+  }
+}
+
+/* Vị trí */
+.sale-badge--tl {
+  top: 0.75rem;
+  left: 0.75rem;
+}
+.sale-badge--tr {
+  top: 0.75rem;
+  right: 0.75rem;
+}
+.sale-badge--bl {
+  bottom: 0.75rem;
+  left: 0.75rem;
+}
+.sale-badge--br {
+  bottom: 0.75rem;
+  right: 0.75rem;
+}
+
+/* Skin ví dụ: ribbon (mũi tên) – không làm tăng chiều cao layout vì là ::after tuyệt đối */
+.sale-badge--ribbon {
+  background: linear-gradient(135deg, #ff4b2b, #ff416c);
+  padding: 0.45rem 0.8rem;
+  border-radius: 8px;
+  position: absolute;
+
+  &::after {
+    content: "";
+    position: absolute;
+    right: -10px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-left: 10px solid #ff416c;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+  }
+}
+
+/* Skin pill (viên thuốc) – tuỳ chọn */
+.sale-badge--pill {
+  background: linear-gradient(135deg, #ff4b2b, #ff416c);
+  padding: 0.4rem 0.7rem;
+  border-radius: 999px;
+  position: absolute;
+}
+
+/* Badge NEW/OOS (overlay, đặt các góc khác) */
+.product-card__badge {
+  position: absolute;
+  z-index: 3;
+  padding: 0.3rem 0.55rem;
+  font-size: 0.74rem;
+  font-weight: 700;
+  border-radius: 6px;
+  line-height: 1;
+
+  &--new {
+    top: 0.75rem;
+    right: 0.75rem;
+    background: #ffc300;
+    color: #111;
+  }
+  &--oos {
+    bottom: 0.75rem;
+    right: 0.75rem;
+    background: #b71c1c;
+    color: #fff;
+  }
+}
