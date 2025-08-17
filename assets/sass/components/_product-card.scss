@@ -1,8 +1,8 @@
 @use "../abstracts/" as *;
 
 $product-card-bg: #0d0d0d; // đen
-$product-card-primary: theme-color("primary-color"); // vàng
-$product-card-text: theme-color("text-color-1");
+$product-card-primary: theme-color("brand"); // vàng
+$product-card-text: theme-color("text");
 
 .product-card--yb {
   display: flex;

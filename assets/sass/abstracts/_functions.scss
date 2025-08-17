@@ -2,7 +2,7 @@
 @use "sass:map";
 @use "sass:math";
 
-$default-theme: theme-color.$theme-color-dark !default;
+$default-theme: theme-color.$theme-dark !default;
 //Function lấy màu theo key
 @function theme-color($key) {
   @return map.get($default-theme, $key);

@@ -28,7 +28,7 @@
     & .tmt-cart__right {
       grid-area: right;
       background-color: color.adjust(
-        theme-color("background-color"),
+        theme-color("background"),
         $lightness: 2%
       );
 

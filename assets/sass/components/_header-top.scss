@@ -3,11 +3,8 @@
 
 .site-header__top {
   width: 100vw;
-  background-color: color.scale(
-    theme-color("background-color"),
-    $lightness: 10%
-  );
-  border-bottom: 1px solid rgba(255, 195, 0, 0.1);
+  background-color: theme-color("surface");
+  border-bottom: 1px solid rgba(theme-color("brand"), 0.1);
 }
 
 .header-top {
@@ -22,10 +19,13 @@
 }
 
 .header-top__nav {
-  // width: 50%;
-
   & .menu-list {
+    margin: 0 auto;
     display: flex;
+    & a,
+    & i {
+      color: theme-color("text");
+    }
     flex-flow: row wrap;
     justify-content: flex-start;
     align-items: center;
@@ -33,31 +33,27 @@
     flex: 1;
   }
 }
-// .header-top__user {
-//    width: 10%;
-//   text-align: right;
-//   // padding-left: 3rem;
-//   border: 1px solid theme-color("primary-color");
-//   display: inline-flex;
-//   align-items: center;
-//   justify-content: center;
-//   gap: 0.4rem;
-//   inline-size: 28px;
-//   block-size: 28px;
-//   border-radius: 999px;
-//   transition: all 0.2s ease;
-// }
+
 .header-top__social {
   & i {
-    border: 1px solid theme-color("primary-color");
+    // border: 1px solid theme-color("border");
+    border: 1px solid rgba(theme-color("brand"), 0.12);
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 0.4rem;
+    color: theme-color("text");
     inline-size: 28px;
     block-size: 28px;
     border-radius: 999px;
-    transition: all 0.2s ease;
+    transition: box-shadow 0.2s ease, border-color 0.2s ease;
+    &:hover {
+      border-color: theme-color("brand");
+    }
+    &:focus-visible {
+      outline: 2px solid theme-color("brand");
+      outline-offset: 2px;
+    }
   }
 }
 

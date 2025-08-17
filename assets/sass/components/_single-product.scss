@@ -1,3 +1,5 @@
+@use "../abstracts/" as *;
+
 /* 1) Container */
 .single-product div.product {
   display: grid;
@@ -13,7 +15,7 @@
   grid-area: gallery;
   padding: 1rem;
   border-radius: 6px; /* bo góc */
-  border: 2px solid#cca800;
+  border: 2px solid theme-color("brand");
   & .woocommerce-product-gallery {
     margin: 0 auto;
     width: 100% !important;
@@ -52,7 +54,7 @@
 }
 
 .tmt-sp__meta .product_meta span a {
-  color: #ffc300; /* Màu link */
+  color: theme-color("brand"); /* Màu link */
   text-decoration: none;
 }
 

@@ -1,9 +1,9 @@
 @use "../abstracts/" as *;
 
 // Variables
-$color-gold: theme-color("primary-color");
-$color-ink: theme-color("text-color-1");
-$color-muted: #6b7280;
+$color-gold: theme-color("brand");
+$color-ink: theme-color("text");
+$color-muted: theme-color("mute");
 $color-stroke: #e5e7eb;
 
 $radius: 12px;
@@ -26,7 +26,7 @@ $bp-sm: 640px; // mobile breakpoint for progressive enhancements
       list-style: none;
       padding: 0;
       margin: 0 0 0.75rem;
-      border-bottom: 1px solid theme-color("secondary-color");
+      border-bottom: 1px solid theme-color("brand");
       li {
         position: relative;
       }
@@ -63,7 +63,7 @@ $bp-sm: 640px; // mobile breakpoint for progressive enhancements
         transparent 60%
       ),
       linear-gradient(90deg, rgba(255, 255, 255, 0.04), transparent 30%);
-      border: 1px solid theme-color("border-color");
+      border: 1px solid theme-color("brand");
       border-radius: $radius;
       padding: 1rem;
     }
@@ -101,7 +101,7 @@ $bp-sm: 640px; // mobile breakpoint for progressive enhancements
     .tmt-accordion__body {
       display: none;
       padding: 0.875rem 1rem;
-      background: #fff;
+      background: #a72525;
     }
     .tmt-accordion__item.active .tmt-accordion__body {
       display: block;

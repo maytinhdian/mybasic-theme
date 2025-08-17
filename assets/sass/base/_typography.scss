@@ -1,16 +1,275 @@
-@use "../abstracts/" as *;
+// _typography.scss
+// Typography + Spacing system cho theme dark
 
+@use "../abstracts/functions" as fn;
+
+// ================== Font Stacks ==================
+$font-sans: "Roboto", "Montserrat", sans-serif,
+  "Apple Color Emoji", "Segoe UI Emoji";
+$font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+  "Liberation Mono", "Courier New", monospace;
+
+// ================== Base Metrics ==================
+$lh-base: 1.6;
+$fw-regular: 400;
+$fw-medium: 500;
+$fw-semibold: 600;
+$fw-bold: 700;
+
+// ================== Font Sizes ==================
+$h1: clamp(2.8rem, 2rem + 2.5vw, 4.0rem); // 28–40px
+$h2: clamp(2.4rem, 1.8rem + 2vw, 3.2rem); // 24–32px
+$h3: clamp(2.0rem, 1.6rem + 1.5vw, 2.6rem); // 20–26px
+$h4: 1.8rem; // 18px
+$h5: 1.6rem; // 16px
+$h6: 1.4rem; // 14px
+$body: 1.6rem; // 16px
+
+// ================== Spacing Scale ==================
+$space-0: 0;        // 0px
+$space-1: 0.4rem;   // 4px
+$space-2: 0.8rem;   // 8px
+$space-3: 1.2rem;   // 12px
+$space-4: 1.6rem;   // 16px
+$space-5: 2.4rem;   // 24px
+$space-6: 3.2rem;   // 32px
+$space-7: 4.0rem;   // 40px
+$space-8: 4.8rem;   // 48px
+$space-9: 6.4rem;   // 64px
+$space-10: 8.0rem;  // 80px
+
+$spacings: (
+  0: $space-0,
+  1: $space-1,
+  2: $space-2,
+  3: $space-3,
+  4: $space-4,
+  5: $space-5,
+  6: $space-6,
+  7: $space-7,
+  8: $space-8,
+  9: $space-9,
+  10: $space-10
+);
+
+// ================== Functions & Mixins ==================
+@function space($key) {
+  @return map-get($spacings, $key);
+}
+
+@mixin focus-ring($c: fn.theme-color('brand')) {
+  outline: 2px solid $c;
+  outline-offset: 2px;
+}
+
+@mixin heading($size, $weight: $fw-semibold) {
+  font-family: $font-sans;
+  font-weight: $weight;
+  line-height: 1.25;
+  margin: 0 0 space(2);
+  font-size: $size;
+  color: fn.theme-color('text');
+
+  &.is-inverse {
+    color: fn.theme-color('text-inverse');
+  }
+}
+
+@mixin text-muted() {
+  color: fn.theme-color('muted');
+}
+
+@mixin text-color($key) {
+  color: fn.theme-color($key);
+}
+
+// ================== Base ==================
 html {
-  font-size: 62.5%; /* 62.5% của 16px = 10px */
+  font-size: 62.5%; // 1rem = 10px
 }
 
 body {
-  font-size: $font-size-base;
-  line-height: 1.6;
-  font-family: $font-family-base;
-  color: theme-color("text-color-1");
+  font-family: $font-sans;
+  font-size: $body;
+  line-height: $lh-base;
+  color: fn.theme-color('text');
+  background-color: fn.theme-color('background');
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
 }
 
-a:hover {
-  color: theme-color("secondary-color");
+// ================== Headings ==================
+h1 { @include heading($h1, $fw-bold); }
+h2 { @include heading($h2, $fw-bold); }
+h3 { @include heading($h3, $fw-semibold); }
+h4 { @include heading($h4, $fw-semibold); }
+h5 { @include heading($h5, $fw-medium); }
+h6 { @include heading($h6, $fw-medium); }
+
+.eyebrow {
+  display: block;
+  font-size: 1.2rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  font-weight: $fw-semibold;
+  color: fn.theme-color('brand');
+  margin-bottom: space(2);
+}
+
+.lead {
+  font-size: 1.8rem;
+  line-height: 1.5;
+  @include text-muted();
+}
+
+// ================== Links ==================
+a {
+  color: fn.theme-color('link');
+  text-decoration: none;
+  text-underline-offset: 2px;
+
+  &:hover { text-decoration-thickness: 2px; }
+  &:focus-visible { @include focus-ring(); }
+  &:active { color: fn.theme-color('accent'); }
+}
+
+// ================== Code & Pre ==================
+code, kbd {
+  font-family: $font-mono;
+  font-size: 1.4rem;
+  background: fn.theme-color('surface');
+  color: fn.theme-color('text');
+  padding: .2em .4em;
+  border: 1px solid fn.theme-color('border');
+  border-radius: .4rem;
+}
+
+pre {
+  font-family: $font-mono;
+  font-size: 1.4rem;
+  line-height: 1.5;
+  padding: space(4);
+  background: fn.theme-color('surface');
+  color: fn.theme-color('text');
+  border: 1px solid fn.theme-color('border');
+  border-radius: .8rem;
+  overflow: auto;
+
+  code { border: 0; padding: 0; background: transparent; }
+}
+
+// ================== Lists ==================
+ul, ol {
+  margin: 0 0 space(3) space(4);
+  padding: 0;
+}
+li { margin: .25em 0; }
+ul li::marker { color: fn.theme-color('brand'); }
+ol li::marker { color: fn.theme-color('brand'); }
+
+// ================== Blockquote ==================
+blockquote {
+  margin: space(4) 0;
+  padding: space(3) space(4);
+  border-left: 4px solid fn.theme-color('brand');
+  background: fn.theme-color('surface');
+  color: fn.theme-color('text');
+  border-radius: .6rem;
+
+  cite {
+    display: block;
+    margin-top: space(2);
+    font-style: normal;
+    @include text-muted();
+  }
+}
+
+// ================== Tables ==================
+table {
+  width: 100%;
+  border-collapse: collapse;
+  color: fn.theme-color('text');
+  background: fn.theme-color('surface');
+  border: 1px solid fn.theme-color('border');
+  border-radius: .8rem;
+  overflow: hidden;
+
+  th, td {
+    padding: space(3) space(4);
+    border-bottom: 1px solid fn.theme-color('border');
+  }
+
+  thead th {
+    font-weight: $fw-semibold;
+    color: fn.theme-color('text');
+    background: fn.theme-color('background');
+  }
+
+  tbody tr:nth-child(odd) {
+    background: mix(fn.theme-color('surface'), fn.theme-color('background'), 60%);
+  }
+}
+
+// ================== HR ==================
+hr {
+  border: 0;
+  height: 1px;
+  background: fn.theme-color('border');
+  margin: space(4) 0;
+}
+
+// ================== Utilities ==================
+.text-brand   { @include text-color('brand'); }
+.text-info    { @include text-color('info'); }
+.text-accent  { @include text-color('accent'); }
+.text-muted   { @include text-muted(); }
+.text-inverse { @include text-color('text-inverse'); }
+
+.text-success { @include text-color('success'); }
+.text-warning { @include text-color('warning'); }
+.text-danger  { @include text-color('danger'); }
+
+.badge {
+  display: inline-block;
+  padding: .2rem .6rem;
+  border-radius: 999px;
+  font-size: 1.2rem;
+  line-height: 1.2;
+  font-weight: $fw-semibold;
+  border: 1px solid fn.theme-color('border');
+
+  &--brand   { background: fn.theme-color('brand');   color: fn.theme-color('text-inverse'); }
+  &--info    { background: fn.theme-color('info');    color: fn.theme-color('text-inverse'); }
+  &--accent  { background: fn.theme-color('accent');  color: fn.theme-color('text-inverse'); }
+  &--success { background: fn.theme-color('success'); color: fn.theme-color('text-inverse'); }
+  &--warning { background: fn.theme-color('warning'); color: fn.theme-color('text-inverse'); }
+  &--danger  { background: fn.theme-color('danger');  color: fn.theme-color('text-inverse'); }
+}
+
+// ================== Forms ==================
+label {
+  display: inline-block;
+  margin-bottom: space(1);
+  font-weight: $fw-medium;
+  color: fn.theme-color('text');
+}
+
+input, textarea, select {
+  font: inherit;
+  color: fn.theme-color('text');
+  background: fn.theme-color('surface');
+  border: 1px solid fn.theme-color('border');
+  border-radius: .6rem;
+  padding: space(2) space(3);
+
+  &::placeholder { @include text-muted(); }
+  &:focus-visible { @include focus-ring(); }
+}
+
+// ================== Prose Wrapper ==================
+.prose {
+  p { margin: 0 0 space(4); }
+  img, video { max-width: 100%; height: auto; border-radius: .6rem; }
+  figure { margin: 0 0 space(4); }
+  figcaption { @include text-muted(); font-size: 1.4rem; margin-top: space(2); }
 }

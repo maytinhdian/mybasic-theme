@@ -1,25 +1,58 @@
 ///Theme Color
 /// @type Color
 
-$theme-color-light: (
-  "primary-color": rgb(255, 189, 57),
-  "secondary-color": #00deff,
-  "accent-color": #ff46b1,
-  "text-color-1": #1a1a1a,
-  "text-color-2": #ffffff,
-  "background-color": #ffffff,
-  "border-color": #cca800,
-  "link-color": #ff7ec8,
+// $theme-color-light: (
+//   "primary-color": rgb(255, 189, 57),
+//   "secondary-color": #00deff,
+//   "accent-color": #ff46b1,
+//   "text-color-1": #1a1a1a,
+//   "text-color-2": #ffffff,
+//   "background-color": #ffffff,
+//   "border-color": #cca800,
+//   "link-color": #ff7ec8,
+// ) !default;
+
+// $theme-color-dark: (
+//   "primary-color": #ffc300,
+//   "secondary-color": #ffd966,
+//   "accent-color": #ff46b1,
+//   "text-color-1": #f2f2f2f2,
+//   "text-color-2": #1a1a1a,
+//   "background-color": #0d0d0d,
+//   "border-color": #cca800,
+//   "link-color": #ff7ec8,
+//   "section-color": #1a1a1a,
+// ) !default;
+
+$theme-dark: (
+  brand: #ffc300,               // primary → brand
+  info: #ffc919,                // secondary → info
+  accent: #e6b000,              // accent → accent
+  text: #f2f2f2,                // text-color-1 → text
+  text-inverse: #1a1a1a,        // text-color-2 → text-inverse
+  background: #0d0d0d,          // background-color → background Darker #0c0c0c Lighter #252525 #3d3d3d
+  border:#ABB8C3,              // border-color → border
+  link: #ffc300,                // link-color → link
+  surface: #252525,             // section-color → surface
+  success: #28a745,             // trạng thái success
+  warning: #ffc107,             // trạng thái warning
+  danger: #dc3545,              // trạng thái error/danger
+  muted: #999999                // text phụ trong dark
 ) !default;
 
-$theme-color-dark: (
-  "primary-color": #ffc300,
-  "secondary-color": #ffd966,
-  "accent-color": #ff46b1,
-  "text-color-1": #f2f2f2f2,
-  "text-color-2": #1a1a1a,
-  "background-color": #0d0d0d,
-  "border-color": #cca800,
-  "link-color": #ff7ec8,
-  "section-color": #1a1a1a,
+
+$theme-light: (
+  brand: rgb(255, 189, 57),     // primary → brand
+  info: #00deff,                // secondary → info
+  accent: #ff46b1,              // accent → accent
+  text: #1a1a1a,                // text-color-1 → text
+  text-inverse: #ffffff,        // text-color-2 → text-inverse
+  background: #ffffff,          // background-color → background
+  border: #cca800,              // border-color → border
+  link: #ff7ec8,                // link-color → link
+  surface: #f7f7f7,             // bổ sung surface nhẹ
+  success: #28a745,             // trạng thái success
+  warning: #ffc107,             // trạng thái warning
+  danger: #dc3545,              // trạng thái error/danger
+  muted: #6c757d                // màu text phụ
 ) !default;

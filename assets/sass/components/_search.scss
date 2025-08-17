@@ -1,7 +1,7 @@
 @use "../abstracts/" as *;
 .search-bar {
   display: flex;
-  border: 1px solid theme-color("primary-color");
+  border: 2px solid theme-color("brand");
   border-radius: 999px;
   overflow: hidden;
   width: clamp(40rem, 30vw + 2rem, 40vw);
@@ -16,7 +16,7 @@
   }
 
   .search-button {
-    background: theme-color("primary-color");
+    background: theme-color("brand");
     border: none;
     padding: 0 1rem;
     font-size: 1.5rem;
