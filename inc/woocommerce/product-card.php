@@ -113,11 +113,13 @@ class WC_Product_Card
 
         echo '<div class="product-card__media">';
 
+        $style = get_theme_mod('sale_badge_style', 'pill'); // 'pill' | 'flag'
+        $pos = get_theme_mod( 'sale_badge_position', 'tl' );
         // SALE badge overlay
         if (class_exists(\TMT\Theme\Woo\WC_Sale_Badge::class)) {
             $pct = \TMT\Theme\Woo\WC_Sale_Badge::discount_pct($product);
             if ($pct > 0) {
-                echo \TMT\Theme\Woo\WC_Sale_Badge::render($pct, 'ribbon', 'tl'); // skin: ribbon|pill|circle|flag  pos: tl|tr|bl|br
+                echo \TMT\Theme\Woo\WC_Sale_Badge::render($pct, $style, $pos); // skin: ribbon|pill|circle|flag  pos: tl|tr|bl|br
             }
         }
 
