@@ -32,6 +32,12 @@ class WC_Product_Card
         add_action('woocommerce_after_shop_loop_item_title',   [__CLASS__, 'meta'], 10);
         add_action('woocommerce_after_shop_loop_item',         [__CLASS__, 'actions'], 20);
         add_action('woocommerce_after_shop_loop_item',         [__CLASS__, 'close_card'], 99);
+
+        // 1) Sửa markup nút add-to-cart trước khi render (phòng trường hợp theme đổi text thành VIEW CART)
+        add_filter('woocommerce_loop_add_to_cart_link', [__CLASS__, 'filter_loop_add_to_cart_link'], 10, 3);
+
+        // 2) Chặn Woo thêm link "View cart" bằng cách sửa tham số JS được localize
+        add_filter('woocommerce_get_script_data', [__CLASS__, 'filter_wc_script_data'], 10, 3);
     }
 
     public static function unhook_defaults(): void
@@ -158,5 +164,30 @@ class WC_Product_Card
     {
         if (!self::guard()) return;
         echo '</article>';
+    }
+
+    public static function filter_loop_add_to_cart_link($button, $product, $args)
+    {
+        // Nếu vì lý do nào đó text nút bị đổi thành VIEW CART sau khi added,
+        // bạn có thể ép lại text (tuỳ ý):
+        $button = str_replace('VIEW CART', 'Thêm vào giỏ', $button);
+        return $button;
+    }
+
+    // Trước: public static function filter_wc_script_data($data, $handle, $name)
+    public static function filter_wc_script_data($data, $handle)
+    {
+        // Chỉ can thiệp vào script 'wc-add-to-cart'
+        if ($handle === 'wc-add-to-cart') {
+            // Chặn Woo thêm link "View cart"
+            $data['cart_url'] = '';
+            $data['i18n_view_cart'] = '';
+
+            // tuỳ chọn: tắt luôn thông báo đi kèm
+            if (isset($data['added_to_cart_notice'])) {
+                $data['added_to_cart_notice'] = '';
+            }
+        }
+        return $data;
     }
 }

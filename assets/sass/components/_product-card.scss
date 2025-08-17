@@ -18,26 +18,6 @@ $product-card-text: theme-color("text");
       overflow: hidden;
     }
 
-    // &__badge {
-    //   position: absolute;
-    //   top: 0.75rem;
-    //   left: 0.75rem;
-    //   padding: 0.25rem 0.5rem;
-    //   font-size: 0.75rem;
-    //   font-weight: 700;
-    //   border-radius: 6px;
-    //   &--sale {
-    //     background: red;
-    //     color: whitesmoke;
-    //     font-size: 1.85rem;
-    //   }
-    //   &--oos {
-    //     background: #444;
-    //     color: #ddd;
-    //     left: auto;
-    //     right: 0.75rem;
-    //   }
-    // }
 
     &__image img {
       display: block;
@@ -113,7 +93,8 @@ $product-card-text: theme-color("text");
     }
 
     &__actions {
-      margin: 0 0.75rem;
+      margin-top: auto; /* Mấu chốt */
+      padding-top: 0.75rem; /* tạo khoảng cách nhẹ với phần trên */
       .button {
         width: 100%;
         background: $product-card-primary;
