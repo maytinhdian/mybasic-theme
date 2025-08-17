@@ -80,28 +80,7 @@ class WC_Product_Card
         echo '<article class="product-card product-card--yb">';
     }
 
-    // public static function media(): void {
-    //     if (!self::guard()) return;
-    //     global $product;
-    //     $permalink = get_permalink($product->get_id());
-    //     $img = $product->get_image('woocommerce_thumbnail', ['class'=>'product-card__img'], false);
 
-    //     $badge = '';
-    //     $reg = (float)$product->get_regular_price();
-    //     $sale = (float)$product->get_sale_price();
-    //     if ($product->is_on_sale() && $reg > 0 && $sale > 0 && $sale < $reg) {
-    //         $pct = round((($reg - $sale) / $reg) * 100);
-    //         $badge .= '<span class="product-card__badge product-card__badge--sale">-' . esc_html($pct) . '%</span>';
-    //     }
-    //     $badge .= '<span class="product-card__badge product-card__badge--new">Sale</span>';
-
-    //     $oos = $product->is_in_stock() ? '' : '<span class="product-card__badge product-card__badge--oos">Hết hàng</span>';
-
-    //     echo '<div class="product-card__media">';
-    //     echo '<div class="product-card__badges">'.$badge.'</div>'.$oos;
-    //     echo '<a class="product-card__image" href="'.esc_url($permalink).'">'.$img.'</a>';
-    //     echo '</div>';
-    // }
 
     public static function media(): void
     {

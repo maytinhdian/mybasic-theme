@@ -13,13 +13,13 @@ new \Kirki\Panel(
 	]
 );
 
-/*Panel*/
+/*Panel Woo Sale Badge*/
 new \Kirki\Panel(
 	'panel_sale_badge',
 	[
 		'priority'    => 10,
-		'title'       => esc_html__('Sale Badge Settings', 'phu_kien_xau'),
-		'description' => esc_html__('Badge khuyến mãi giảm giá.', 'phu_kien_xau'),
+		'title'       => esc_html__('Woocommerce Badge Settings', 'phu_kien_xau'),
+		'description' => esc_html__('Thiết lập cho sale badge.', 'phu_kien_xau'),
 	]
 );
 
@@ -39,8 +39,8 @@ new \Kirki\Section(
 new \Kirki\Section(
 	'badge_icon_section',
 	[
-		'title'       => esc_html__('Woo – Sale Badge', 'phu_kien_xau'),
-		'description' => esc_html__('Tùy chọn kiểu hiển thị badge giảm giá', 'phu_kien_xau'),
+		'title'       => esc_html__('Layout - Position', 'phu_kien_xau'),
+		'description' => esc_html__('Kiểu hiện thị và vị trí', 'phu_kien_xau'),
 		'panel'       => 'panel_sale_badge',
 		'priority'    => 160,
 	]
@@ -65,32 +65,6 @@ new \Kirki\Field\Text(
 		),
 	]
 );
-
-
-// /*Field - Sale Badge -*/
-// new \Kirki\Field\Text(
-// 	[
-// 		'type'        => 'radio-buttonset',
-// 		'settings'    => 'sale_badge_style',
-// 		'label'       => esc_html__('Kiểu Sale Badge', 'phu_kien_xau'),
-// 		'description' => esc_html__('Leave blank if not need', 'phu_kien_xau'),
-// 		'section'     => 'badge_icon_section',
-// 		'default'     => esc_html__('pill', 'phu_kien_xau'),  // pill | flag
-// 		'priority'    => 10,
-// 		'choices'     => [
-// 			'pill' => esc_html__('Pill', 'tmt'),
-// 			'flag' => esc_html__('Flag', 'tmt'),
-// 		],
-// 		'partial_refresh' => array(
-// 			'sale_badge_style' => array(
-// 				'selector' => '.header-top ul li a',
-// 				'render_callback' => function () {
-// 					return  get_theme_mod('sale_badge_style');
-// 				},
-// 			)
-// 		),
-// 	]
-// );
 
 /*Field - Sale Badge -*/
 new \Kirki\Field\Radio_Buttonset([

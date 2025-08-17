@@ -36,8 +36,8 @@ final class WC_Sale_Badge
         if ($pct <= 0) return ''; // không on-sale thì không in
 
         // Cho phép đổi skin/position qua filter hoặc theme_mod
-        $skin = apply_filters('tmt_sale_badge_skin', get_theme_mod('tmt_sale_badge_skin', 'ribbon')); // 'pill'|'ribbon'|'circle'|'flag'
-        $pos  = apply_filters('tmt_sale_badge_pos',  get_theme_mod('tmt_sale_badge_pos',  'tl'));     // 'tl'|'tr'|'bl'|'br'
+        $skin = apply_filters('tmt_sale_badge_skin', get_theme_mod('sale_badge_style', 'ribbon')); // 'pill'|'ribbon'|'circle'|'flag'
+        $pos  = apply_filters('tmt_sale_badge_pos',  get_theme_mod('sale_badge_position',  'tl'));     // 'tl'|'tr'|'bl'|'br'
 
         return self::render($pct, $skin, $pos);
     }
